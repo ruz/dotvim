@@ -26,12 +26,12 @@ Bundle 'tpope/vim-endwise'
 Bundle 'Raimondi/delimitMate'
 
 " Ruby/Rails
-Bundle 'tpope/vim-rails'
-Bundle 'tpope/vim-bundler'
-Bundle 'tpope/vim-rake'
-Bundle 'nelstrom/vim-textobj-rubyblock'
-Bundle 'ecomba/vim-ruby-refactoring'
-Bundle 'apidock.vim'
+"Bundle 'tpope/vim-rails'
+"Bundle 'tpope/vim-bundler'
+"Bundle 'tpope/vim-rake'
+"Bundle 'nelstrom/vim-textobj-rubyblock'
+"Bundle 'ecomba/vim-ruby-refactoring'
+"Bundle 'apidock.vim'
 
 " color themes
 Bundle 'altercation/vim-colors-solarized'
