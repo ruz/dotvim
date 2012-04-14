@@ -22,7 +22,7 @@ set laststatus=2        " always show the status line
 set listchars=tab:▷⋅,trail:·
 set list
 
-colorscheme vividchalk
+colorscheme solarized
 set background=dark
 
 " highlight spell errors
@@ -46,7 +46,8 @@ set modelines=5         " number of lines to check for vim: directives at the st
 "set fixdel                 " fix terminal code for delete (if delete is broken but backspace works)
 set autoindent          " automatically indent new line
 
-set ts=4                " number of spaces in a tab
+set ts=8                " number of spaces in a tab
+set sts=4               " number of spaces used instead of tab during editing
 set sw=4                " number of spaces for indent
 set et                  " expand tabs into spaces
 
