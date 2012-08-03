@@ -1,9 +1,74 @@
-This is a complete Vim configuration that I'm using everywhere
+## Dotvim
 
-The config is using [Vundle](http://github.com/gmarik/vundle) for easy upgrading.
+### An attempt at The Ultimate Vim Configuration™ ;)
 
-*Some* help tips are provided for *some* of the plugins. please check out the plugin's docs for more info.
+All the right plugins are in. Nerdtree, CtrlP, you name it.
 
+The focus is on supporting Rails, but there is a lot of generic stuff too, so
+it will surely serve you well with any language of your choice.
+
+The config is using [Vundle](http://github.com/gmarik/vundle) for easy
+upgrading.
+
+*Some* help tips are provided for *some* of the plugins. please check out the
+plugin's docs for more info.
+
+Follow [@vkushner][@vkushner] and [@astrails][@astrails] on Twitter to receive
+announcements of new versions, tips, etc.
+
+[@vkushner]: https://twitter.com/vkushner
+[@astrails]: https://twitter.com/astrails
+
+<a name=top>
+#### Contents
+
+* [Installation](#installation)
+* [General Configuration](#general)
+* [Backups](#backups)
+* [Persistent Undo](#undo)
+* [Macros](#macros)
+* [Interesting Plugins](#interesting)
+  * [nerdtree](#nerdtree)
+  * [nerdcommenter](#nerdcommenter)
+  * [Command-T](#Command-T)
+  * [CtrlP](#CtrlP)
+  * [AutoComplPop](#AutoComplPop)
+  * [taglist.vim](#taglist.vim)
+  * [YankRing.vim](#YankRing.vim)
+  * [vim-fugitive](#vim-fugitive)
+  * [syntastic](#syntastic)
+  * [snipmate](#snipmate)
+  * [vim-surround](#vim-surround)
+  * [vim-align](#vim-align)
+  * [ack.vim](#ack.vim)
+  * [vim-indentobject](#vim-indentobject)
+  * [greplace.vim](#greplace.vim)
+  * [vim-powerline](#vim-powerline)
+  * [threesome.vim](#threesome.vim)
+  * [vim-endwise](#vim-endwise)
+  * [delimitMate](#delimitMate)
+  * [Gundo](#dgundo)
+* [Ruby/Rails Support](#ruby)
+  * [vim-rails](#vim-rails)
+  * [vim-bundler](#vim-bundler)
+  * [vim-rake](#vim-rake)
+  * [vim-textobj-rubyblock](#vim-textobj-rubyblock)
+  * [vim-ruby-refactoring](#vim-ruby-refactoring)
+  * [apidock.vim](#apidock.vim)
+* [Org mode and support plugins](#orgmode)
+  * [calendar](#calendar)
+  * [NrrwRgn](#NrrwRgn)
+  * [utl.vim](#utl.vim)
+  * [VimOrganizer](#VimOrganizer)
+* [Color themes](#themes)
+  * [vim-colors-solarized](#vim-colors-solarized)
+  * [vim-vividchalk](#vim-vividchalk)
+* [Syntax plugins](#syntax)
+* ["Support" and "minor" plugins](#minor)
+* [Misc Bindings](#misc)
+* [Russian Translit Layout support](#russian)
+
+<a name=installation>
 ##### Installation
 
 From your homedirectory (on Linux/Mac OSX):
@@ -12,11 +77,14 @@ From your homedirectory (on Linux/Mac OSX):
 * `ln -sfn dotvim .vim`
 * `ln -sfn dotvim/vimrc .vimrc`
 * `cd .vim; make install`
-* create ~/.vim\_local if you want to have some
+* create ~/.local.vim if you want to have some
   local/personal settings you don't want to commit into the repo
 
 Note: if you already have `~/.vim` `~/.vimrc` REMOVE THEM (you might want to backup them first :)
 
+[top](#top)
+
+<a name=general>
 #### General configuration
 
 `,` is used as mapleader
@@ -31,20 +99,81 @@ Note: if you already have `~/.vim` `~/.vimrc` REMOVE THEM (you might want to bac
 * `,f` global Ggrep for word under the cursor or for selection
 * `+`, `-` - easily inc/decrement integers
 * `,W` - remove trailing spaces
-* `Ctrl-g`/`h`/`j`/`k` - simplified split panes navigation
+* `Ctrl`-`h`/`j`/`k`/`l` - simplified split panes navigation
+* `,d` - `:diffupdate`
+* `,dp` - `:diffput`
+* `,dg` - `:diffget`
+* `%%` - in **control mode**, i.e. after you typed `:` it will expand to the
+  directory name of the currently opened file.
 
 Check out the 'plugins.vim' and 'after/plugin/bindings.vim' files for more...
 
+[top](#top)
+
+<a name=backups>
+#### Backups
+
+Backups and swapfiles are disabled. I really hate them both.
+
+You can re-enable backups by adding the following to your `~/.local.vim`:
+
+    set backup
+
+ and swapfiles by
+
+    set swapfile
+
+backup dir is set to ~/.backup/
+
+The directory is created if it doesn't exist.
+
+[top](#top)
+
+<a name=undo>
+#### Persistent Undo
+
+Persistent undos are enabled by default.
+
+You can disable by adding the following to your `~/.local.vim`:
+
+    set noundo
+
+[top](#top)
+
+<a name=macros>
+#### Macros
+
+I included a couple of macros that I frequently use in macros.vim which
+is loaded from after.vim:
+
+*    `@q` (re)format paragraph forward
+*    `@s` enclose selection with double \*. e.g. \*\*foo\*\*.
+
+You really should start writing your own macros. The life will never be the
+same ;).
+
+I recommend editing your macros in a vim buffer.
+
+To load a macro into a register you can 'yank' it.
+
+For example if you have a line with a macro and cursor is at the beginning of
+it `"ay$`  will load the macro into register `a`, so that you will be able to
+execute it with `@a`.
+
+[top](#top)
+
+<a name=interesting>
 #### "Interesting" Plugins:
 
-*   [nerdtree](http://github.com/scrooloose/nerdtree)
+
+*   <a name=nerdtree>[nerdtree](http://github.com/scrooloose/nerdtree) ([top](#top))
 
     hax0r vim script to give you a tree explorer
 
     * `Ctrl-P` - open directory browser
     * `,p` - to find and highlight the currently open file in the tree
 
-*   [nerdcommenter](http://github.com/scrooloose/nerdcommenter)
+*   <a name=nerdcommenter>[nerdcommenter](http://github.com/scrooloose/nerdcommenter) ([top](#top))
 
     Vim plugin for intensely orgasmic commenting
 
@@ -53,12 +182,15 @@ Check out the 'plugins.vim' and 'after/plugin/bindings.vim' files for more...
     * `,cu` - Uncomment
     * check docs for more
 
-*   [Command-T](http://github.com/vim-scripts/Command-T)
+*   <a name=Command-T>[Command-T](http://github.com/vim-scripts/Command-T) ([top](#top))
 
     TextMate Command-T like file finder for vim
 
-    * `,,` - find file
-    * `,.` - refresh the file list and then find a file
+    Note: This plugin is currently **DISABLED**. See [CtrlP](#CtrlP) plugin
+    that is used instead
+
+    * `,,` - `CommandT` - find file
+    * `,.` - `CommandTFlush` - refresh the file list and then find a file
     * while at the finder prompt:
       * `Ctrl-Enter` - open file in a new split
       * `Ctrl-s` - open file in a new split
@@ -67,19 +199,40 @@ Check out the 'plugins.vim' and 'after/plugin/bindings.vim' files for more...
       * `Esc` - cancel
       * `Ctrl-c` - cancel
 
-*   [AutoComplPop](http://github.com/vim-scripts/AutoComplPop)
+*   <a name=CtrlP>[CtrlP](https://github.com/kien/ctrlp.vim) ([top](#top))
+
+    Fuzzy file, buffer, mru, tag, etc finder.
+
+    This is the new fuzzy finder used by dotvim. It replaced
+    [Command-T](#Command-T) that was used before.
+
+    The default mapping is still the same:
+
+    * `,,` - `CtrlP` - fuzzy find.
+    * `,.` - `CtrlPClearCache` followed by `CtrlP` - clears the cache and
+      searches the files (not including MRU and buffers)
+    * `,m` - `CtrlPBufTag` - search tags in the current buffer
+    * `,M` - `CtrlPBufTagAll` - search tags in all buffers
+    * `,l` - `CtrlPLine` - fuzzy search lines in all opened buffers
+    * `,b` - `CtrlPBuff` - fuzzy search open buffers
+    * `,,?<ENTER>` - to quickly open help for CtrlP
+
+
+   This plugin has lots of options, see `:h ctrlp` for more.
+
+*   <a name=AutoComplPop>[AutoComplPop](http://github.com/vim-scripts/AutoComplPop) ([top](#top))
 
     Automatically opens popup menu for completions
 
     Shouldn't require config.
 
-*   [taglist.vim](http://github.com/vim-scripts/taglist.vim)
+*   <a name=taglist.vim>[taglist.vim](http://github.com/vim-scripts/taglist.vim) ([top](#top))
 
     Source code browser (supports C/C++, java, perl, python, tcl, sql, php, etc)
 
     * `,t` - toggle tags window
 
-*   [YankRing.vim](http://github.com/vim-scripts/YankRing.vim)
+*   <a name=YankRing.vim>[YankRing.vim](http://github.com/vim-scripts/YankRing.vim) ([top](#top))
 
     Maintains a history of previous yanks, changes and deletes
 
@@ -87,7 +240,7 @@ Check out the 'plugins.vim' and 'after/plugin/bindings.vim' files for more...
     * `,[`/`,]` - to cycle the just-pasted text though the yankring.
     * `:h yankring.txt` and `:h yankring-tutorial` for more
 
-*   [vim-fugitive](http://github.com/tpope/vim-fugitive)
+*   <a name=vim-fugitive>[vim-fugitive](http://github.com/tpope/vim-fugitive) ([top](#top))
 
     A Git wrapper so awesome, it should be illegal
 
@@ -122,7 +275,7 @@ Check out the 'plugins.vim' and 'after/plugin/bindings.vim' files for more...
 
     Much more in the plugin's doc
 
-*   [syntastic](http://github.com/scrooloose/syntastic)
+*   <a name=syntastic>[syntastic](http://github.com/scrooloose/syntastic) ([top](#top))
 
     syntax checking plugin
 
@@ -130,7 +283,7 @@ Check out the 'plugins.vim' and 'after/plugin/bindings.vim' files for more...
 
     use `:Errors` to display a window detailing the errors
 
-*   [snipmate](http://github.com/msanders/snipmate.vim)
+*   <a name=snipmate>[snipmate](http://github.com/msanders/snipmate.vim) ([top](#top))
 
     TextMate-style snippets for Vim
 
@@ -138,7 +291,7 @@ Check out the 'plugins.vim' and 'after/plugin/bindings.vim' files for more...
 
     To see the list of available snippets type `Ctrl-R <Tab>` in the insert mode
 
-*   [vim-surround](http://github.com/tpope/vim-surround)
+*   <a name=vim-surround>[vim-surround](http://github.com/tpope/vim-surround) ([top](#top))
 
     Delete/change/add parentheses/quotes/XML-tags/much more with ease
 
@@ -149,7 +302,7 @@ Check out the 'plugins.vim' and 'after/plugin/bindings.vim' files for more...
 
     You should REALLY read the docs if you want to use this one
 
-*   [vim-align](http://github.com/tsaleh/vim-align)
+*   <a name=vim-align>[vim-align](http://github.com/tsaleh/vim-align) ([top](#top))
 
     Align and AlignMaps lets you align statements on their equal signs, make comment boxes, align comments, align declarations, etc.
 
@@ -161,7 +314,7 @@ Check out the 'plugins.vim' and 'after/plugin/bindings.vim' files for more...
     * `:AlignSEPARATORS` - align on separators
     * `:h align` - see help for more options
 
-*   [ack.vim](http://github.com/mileszs/ack.vim)
+*   <a name=ack.vim>[ack.vim](http://github.com/mileszs/ack.vim) ([top](#top))
 
     This plugin is a front for the Perl module App::Ack. Ack can be used as a replacement for 99% of the uses of grep.
 
@@ -169,7 +322,7 @@ Check out the 'plugins.vim' and 'after/plugin/bindings.vim' files for more...
     * `:Ack --ruby ...` - search only ruby files.
     * `:h Ack` - more help about Ack
 
-*   [vim-indentobject](https://github.com/austintaylor/vim-indentobject)
+*   <a name=vim-indentobject>[vim-indentobject](https://github.com/austintaylor/vim-indentobject) ([top](#top))
 
     A text object for manipulating blocks based on their indentation
 
@@ -180,7 +333,7 @@ Check out the 'plugins.vim' and 'after/plugin/bindings.vim' files for more...
     * `vai` / `vii` - select indent block including / excluding the outer lines
     * ...
 
-*   [greplace.vim](http://github.com/vim-scripts/greplace.vim)
+*   <a name=greplace.vim>[greplace.vim](http://github.com/vim-scripts/greplace.vim) ([top](#top))
 
     Replace a pattern across multiple files interactively
 
@@ -193,11 +346,11 @@ Check out the 'plugins.vim' and 'after/plugin/bindings.vim' files for more...
     * `:Greplace` - Incorporate the modifications from the replace buffer into
       the corresponding files.
 
-*   [vim-powerline](TBD)
+*   <a name=vim-powerline>[vim-powerline](TBD) ([top](#top))
 
     TBD
 
-*   [threesome.vim](https://github.com/sjl/threesome.vim)
+*   <a name=threesome.vim>[threesome.vim](https://github.com/sjl/threesome.vim) ([top](#top))
 
     A plugin for resolving conflicts during three-way merges.
 
@@ -234,18 +387,29 @@ Check out the 'plugins.vim' and 'after/plugin/bindings.vim' files for more...
 
     * `:h threesome` - you should probably read it ;)
 
-*   [vim-endwise](http://github.com/tpope/vim-endwise)
+*   <a name=vim-endwise>[vim-endwise](http://github.com/tpope/vim-endwise) ([top](#top))
 
     Wisely add "end" in ruby, endfunction/endif/more in vim script, etc
 
-*   [delimitMate](http://github.com/Raimondi/delimitMate)
+*   <a name=delimitMate>[delimitMate](http://github.com/Raimondi/delimitMate) ([top](#top))
 
     auto-completion for quotes, parens, brackets, etc. in insert mode.
 
+*   <a name=gundo>[Gundo](https://github.com/sjl/gundo.vim) ([top](#top))
 
+    Homepage is [here](http://sjl.bitbucket.org/gundo.vim/)
+
+    Graphs your vim undo tree in a side window.
+
+    * `,u` - toggle undo window
+    * `:h gundo.txt` - more help
+
+[top](#top)
+
+<a name=ruby>
 #### Ruby/Rails support:
 
-*   [vim-rails](http://github.com/tpope/vim-rails)
+*   <a name=vim-rails>[vim-rails](http://github.com/tpope/vim-rails) ([top](#top))
 
     Ruby on Rails: easy file navigation, enhanced syntax highlighting, and more
 
@@ -259,7 +423,7 @@ Check out the 'plugins.vim' and 'after/plugin/bindings.vim' files for more...
       associations, partials etc.
     * `:h rails` for much more info ;)
 
-*   [vim-bundler](https://github.com/tpope/vim-bundler)
+*   <a name=vim-bundler>[vim-bundler](https://github.com/tpope/vim-bundler) ([top](#top))
 
     Lightweight support for Ruby's Bundler
 
@@ -267,11 +431,11 @@ Check out the 'plugins.vim' and 'after/plugin/bindings.vim' files for more...
     * `:Bopen NAME` does bundle open NAME - opens gem NAME's lib diretory in the current window.
     * `:Bundle` - runs bundler
 
-*   [vim-rake](https://github.com/tpope/vim-rake)
+*   <a name=vim-rake>[vim-rake](https://github.com/tpope/vim-rake) ([top](#top))
 
     TBD
 
-*   [vim-textobj-rubyblock](https://github.com/nelstrom/vim-textobj-rubyblock)
+*   <a name=vim-textobj-rubyblock>[vim-textobj-rubyblock](https://github.com/nelstrom/vim-textobj-rubyblock) ([top](#top))
 
     A custom text object for selecting ruby blocks.
 
@@ -290,7 +454,7 @@ Check out the 'plugins.vim' and 'after/plugin/bindings.vim' files for more...
     * `vararir` - select insides of the ruby block that is around the ruby block that is around the cursor. not including begin/end
     * ...
 
-*   [vim-ruby-refactoring](https://github.com/ecomba/vim-ruby-refactoring)
+*   <a name=vim-ruby-refactoring>[vim-ruby-refactoring](https://github.com/ecomba/vim-ruby-refactoring) ([top](#top))
 
     Refactoring tool for Ruby in vim!
 
@@ -304,7 +468,7 @@ Check out the 'plugins.vim' and 'after/plugin/bindings.vim' files for more...
     * `,rriv` :RRenameInstanceVariable - Rename Instance Variable (visual selection)
     * `,rem`  :RExtractMethod          - Extract Method (visual selection)
 
-*   [apidock.vim](https://github.com/alexandrov/apidock.vim)
+*   <a name=apidock.vim>[apidock.vim](https://github.com/alexandrov/apidock.vim) ([top](#top))
 
     Vim plugin that searches http://apidock.com Ruby, Rails, and RSpec docs from within Vim.
 
@@ -313,26 +477,109 @@ Check out the 'plugins.vim' and 'after/plugin/bindings.vim' files for more...
     * `RS` - Search the RSpec docs for the word under the cursor.
 
 
+[top](#top)
+
+<a name=orgmode>
+#### Org mode and support plugins
+
+Vim now has support for Emacs' [Org mode](http://orgmode.org/) provided by the
+[VimOrganizer](#VimOrganizer) plugin.
+
+Below you will also find a couple of plugins that support it, but can be also
+used intependently.
+
+*   <a name=calendar>[calendar.vim](https://github.com/vim-scripts/calendar.vim--Matsumoto) ([top](#top))
+
+    Calendar support w/o calling external programs.
+
+    * Commands:
+      * `:Calendar`        - open calendar
+      * `:Calendar 2012 8` - open calendar for 2012-08
+      * `:CalendarH`       - open horizontal calendar
+    * Bindings:
+      * `,cal` -  `:Calendar`
+      * `,caL` -  `:CalendarH`
+
+*   <a name=NrrwRgn>[NrrwRgn](https://github.com/chrisbra/NrrwRgn) ([top](#top))
+
+    A Narrow Region Plugin (similar to Emacs)
+
+    Allows to open selected text in a separate buffer for editing preserving
+    the rest of the file around it.
+
+    * Commands
+      * `[range]:NR` - open selection or range in a buffer. write the buffer when done
+      * `:h NrrwRgn` - read the help ;)
+
+*   <a name=utl.vim>[utl.vim](https://github.com/vim-scripts/utl.vim) ([top](#top))
+
+    Universal Text Linking plugin allow to open urls from text files.
+
+    `:h utl_usr` to read the help.
+
+    Bindings:
+
+    * `,o` - types `:Utl`. you still need to press enter to `o`pen url. This way
+      it allows to type other commands if needed.
+
+*   <a name=VimOrganizer>[VimOrganizer](https://github.com/hsitz/VimOrganizer) ([top](#top))
+
+    VimOrganizer is partly a clone of Emacs' Org-mode, and partly a front end
+    to Org-mode itself. Do Org in Vim.
+
+    Some bindings:
+
+    * `tab` - cycle visibility of single headline/subtree.
+    * `,1` - show level 1 only
+    * `,2` - show level 1 only
+    * ...
+    * In normal mode
+      * `Shift-Enter` - cycle TODO state
+      * `Enter` - add item of same level
+    * insert mode
+      * `Shift-Enter` - add item of same level
+    * Both modes
+      * `Ctrl-Enter` - add item of lover level
+      * `Shift-Ctrl-Enter` - add item of higher level
+    * `,dd` - add DEADLINE
+    * `,ds` - add SCHEDULED
+    * `,dc` - add CLOSED
+    * `,dt` - add a timestamp
+
+    Datetime prompt works mostly like the one in emacs org mode. See docs [here](http://orgmode.org/manual/The-date_002ftime-prompt.html#The-date_002ftime-prompt)
+
+    Its too big to give much userful information here. open any `.org` file to start using it. read the help:
+
+        :h VimOrganizer
+
+    You can find cheat sheet [here](https://github.com/hsitz/VimOrganizer/blob/master/VimOrganizerCheatsheet.org)
+
+    Working with TODO help is [here](http://orgmode.org/manual/TODO-Items.html)
+
+    Org mode site is [here](http://orgmode.org/]
+
+[top](#top)
+
+<a name=themes>
 #### Color themes
 
-*   [vim-colors-solarized](http://github.com/altercation/vim-colors-solarized)
+*   <a name=vim-colors-solarized>[vim-colors-solarized](http://github.com/altercation/vim-colors-solarized) ([top](#top))
 
     precision colorscheme for the vim text editor
 
-*   [vim-vividchalk](http://github.com/tpope/vim-vividchalk)
+*   <a name=vim-vividchalk>[vim-vividchalk](http://github.com/tpope/vim-vividchalk) ([top](#top))
 
     A colorscheme strangely reminiscent of Vibrant Ink for a certain OS X editor
 
 
+[top](#top)
+
+<a name=syntax>
 #### Syntax plugins
 
 *   [vim-tmux](http://tmux.sourceforge.net/)
 
     syntax  suupport (extracted from tmux-1.1)
-
-*   rcov
-
-    support (extracted from rcov-0.8.1.2.0 ruby gem)
 
 *   [Puppet-Syntax-Highlighting](https://github.com/vim-scripts/Puppet-Syntax-Highlighting)
 
@@ -362,10 +609,17 @@ Check out the 'plugins.vim' and 'after/plugin/bindings.vim' files for more...
 
     syntax for [Jade](http://jade-lang.com/)
 
+*   [vim-slim](https://github.com/bbommarito/vim-slim)
+
+    [Slim](http://slim-lang.com/) syntax support.
+
 *   stylus
 
     TBD
 
+[top](#top)
+
+<a name=minor>
 #### "Support" and "minor" plugins
 
 *   [vim-textobj-user](https://github.com/kana/vim-textobj-user)
@@ -383,13 +637,16 @@ Check out the 'plugins.vim' and 'after/plugin/bindings.vim' files for more...
     press SPACE to repeat last motion command
 
 
-### Misc
+[top](#top)
+
+<a name=misc>
+### Misc Bindings
 
 The following is a list of commands and key bindings that I personally find interesting
 stored for easy refreshing my memory of them. there is no much 'system' to it, just
 randomly chosen bits of vim goodness.
 
-
+* `]p` paste with autoindent.
 * `ga` print ascii value of character under the cursor
 * `g#` like "#", but without using "\<" and "\>"
 * `g<` display previous command output
@@ -409,9 +666,31 @@ randomly chosen bits of vim goodness.
 * `:reg` Display the contents of all numbered and named registers.
 
 
-#### Currently disabled
+[top](#top)
 
-*   [vim-unimpaired](http://github.com/tpope/vim-unimpaired)
+<a name=russian>
+#### Russian Translit Layout support
 
-    pairs of assorted bracket maps
+There is ~/.vim/bindings-ru-translit.vim file.
 
+OSX has a nice russian translit keyboard layout which I use when I need to
+write any russian text. The problem is that once I go to the normal mode
+nothing works. This is an attempt to make vim at least partially useful when
+the kerboard is in russioan translit mode and not in the default US mode. The
+idea is to remap the russian characters to the english characters that
+correspond to the same keyboard key. And a couple of userful multy-key
+combinations.
+
+Similar can be done for other keyboard layouts, your pull requests are
+welcome ;).
+
+To use this feature: just include the file from your ~/.local.vim:
+
+    source ~/.vim/bindings-ru-translit.vim
+
+[top](#top)
+
+
+#### Copyright
+
+&copy; 2012 [Vitaly Kushner](mailto:vitaly@astrails.com)

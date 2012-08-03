@@ -22,9 +22,6 @@ set laststatus=2        " always show the status line
 set listchars=tab:\ ⋅,trail:·
 set list
 
-colorscheme solarized
-set background=dark
-
 " highlight spell errors
 hi SpellErrors guibg=red guifg=black ctermbg=red ctermfg=black
 
@@ -57,12 +54,6 @@ if has("mouse")
 endif
 set mousehide                           " Hide mouse pointer on insert mode."
 
-
-if version >= 700 && has("macunix")
-  " Default yank and paste go to Mac's clipboard
-  set clipboard=unnamed
-end
-
 " search settings
 set incsearch           " Incremental search
 set hlsearch            " Highlight search match
@@ -75,10 +66,13 @@ let g:rubycomplete_buffer_loading = 0
 let g:rubycomplete_classes_in_global = 1
 
 " directory settings
+silent !mkdir -vp ~/.backup/undo/ > /dev/null 2>&1
 set backupdir=~/.backup,.       " list of directories for the backup file
 set directory=~/.backup,~/tmp,. " list of directory names for the swap file
 set nobackup            " do not write backup files
 set noswapfile          " do not write .swp files
+set undofile
+set undodir=~/.backup/undo/,~/tmp,.
 
 " folding
 set foldcolumn=0        " columns for folding
@@ -88,3 +82,6 @@ set nofoldenable        "dont fold by default "
 
 " extended '%' mapping for if/then/else/end etc
 runtime macros/matchit.vim
+
+let mapleader = ","
+let maplocalleader = "\\"

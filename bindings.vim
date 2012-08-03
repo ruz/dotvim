@@ -24,11 +24,18 @@ map! <S-Insert> <MiddleMouse>
 nmap <leader>n :cn<CR>
 nmap <leader>N :cp<CR>
 
+" ,d to diffupdate
+nmap <leader>d :diffupdate<CR>
+nmap <leader>dp :diffput<CR>
+nmap <leader>dg :diffget<CR>
+
 "set completeopt=menuone,preview,longest
 set completeopt=menuone,preview
 
 " driving me insane this thing
 command Q q
+command Qa qa
+command QA qa
 command -nargs=* -complete=file W w <args>
 command -nargs=* -complete=file E e <args>
 
@@ -62,3 +69,6 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
+
+" fast expand current file's directory in command mode
+cnoremap %% <C-R>=expand('%:h').'/'<cr>
