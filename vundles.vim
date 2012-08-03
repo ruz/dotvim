@@ -26,6 +26,9 @@ Bundle 'tpope/vim-endwise'
 Bundle 'Raimondi/delimitMate'
 Bundle 'kergoth/vim-HiLinkTrace'
 
+" perl
+Bundle 'petdance/vim-perl'
+
 " Ruby/Rails
 "Bundle 'tpope/vim-rails'
 "Bundle 'tpope/vim-bundler'
