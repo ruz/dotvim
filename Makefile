@@ -18,7 +18,7 @@ bundles:
 	vim -u ./bundles.vim +BundleClean! +BundleInstall
 
 cleanup-bundles:
-	ls bundle | while read b;do (cd bundle/$$b && git clean -f);done
+	ls bundle | while read b;do (cd bundle/$$b && git clean -ffdx);done
 
 upgrade-bundles: cleanup-bundles
 	vim -u ./bundles.vim +BundleClean! +BundleInstall!
