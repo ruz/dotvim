@@ -24,6 +24,7 @@ announcements of new versions, tips, etc.
 
 * [Installation](#installation)
 * [General Configuration](#general)
+* [Local configuration](#local)
 * [Backups](#backups)
 * [Persistent Undo](#undo)
 * [Macros](#macros)
@@ -80,6 +81,11 @@ From your homedirectory (on Linux/Mac OSX):
 * create ~/.local.vim if you want to have some
   local/personal settings you don't want to commit into the repo
 
+> IMPORTANT: **always** add a `colorscheme` to your `~/.local-after.vim` file,
+> even if you use the defaults scheme add `colorscheme default`. Othewise you
+> will get a highlighting error `"E411: highlight group not found: Normal"`
+> during vim startup.
+
 Note: if you already have `~/.vim` `~/.vimrc` REMOVE THEM (you might want to backup them first :)
 
 [top](#top)
@@ -109,6 +115,38 @@ Note: if you already have `~/.vim` `~/.vimrc` REMOVE THEM (you might want to bac
 Check out the 'plugins.vim' and 'after/plugin/bindings.vim' files for more...
 
 [top](#top)
+
+<a name=local>
+#### Local configuration
+
+For easy upgrades its preferable not to change the dotvim configuration files.
+Instead you can add your own local configuration into one of the local override
+files. There are several override files supported by dotvim:
+
+Files loaded **before** the plugins:
+
+* `~/.vim_local` - deprecated
+* `~/.vim-before.vim`
+
+  This is where you should pre-set various plugin flags, enable/disable options
+  etc. This is for things you would normally put into yoru vimrc file.
+
+Files loaded **after** the plugins:
+
+* `~/.local.vim` - deprecated
+* `~/.local-after.vim`
+
+  This is where you can override settings set by plugins that have no
+  customization options etc.
+
+Configuration files are loaded in the following order:
+
+* dotvim configuration
+* .local-before.vim
+* plugins
+* dotvim bindings and overrides
+* .local.vim
+* .local-after.vim
 
 <a name=backups>
 #### Backups

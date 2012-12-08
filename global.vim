@@ -7,6 +7,13 @@ filetype plugin indent on
 set noeol
 set binary
 
+" utf-8/unicode support
+" requires Vim to be compiled with Multibyte support, you can check that by
+" running `vim --version` and checking for +multi_byte.
+if has('multi_byte')
+  scriptencoding utf-8
+  set encoding=utf-8
+end
 " presentation settings
 set number              " precede each line with its line number
 set numberwidth=3       " number of culumns for line numbers
@@ -33,7 +40,7 @@ set shell=bash          " use bash for shell commands
 set autowriteall        " Automatically save before commands like :next and :make
 set hidden              " enable multiple modified buffers
 set history=1000
-set autoread            " automatically read feil that has been changed on disk and doesn't have changes in vim
+set autoread            " automatically read file that has been changed on disk and doesn't have changes in vim
 set backspace=indent,eol,start
 set guioptions-=T       " disable toolbar"
 set completeopt=menuone,preview
