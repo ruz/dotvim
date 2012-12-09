@@ -29,7 +29,7 @@ Bundle 'chrisbra/NrrwRgn'
 Bundle 'utl.vim'
 Bundle 'hsitz/VimOrganizer'
 Bundle 'sjl/gundo.vim'
-Bundle 'kergoth/vim-HiLinkTrace'
+Bundle 'gerw/vim-HiLinkTrace'
 
 " perl
 Bundle 'petdance/vim-perl'
