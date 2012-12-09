@@ -130,3 +130,8 @@ au BufEnter *.org call org#SetOrgFileType()
 " Gundo
 nmap <leader>u :GundoToggle<CR>
 let g:gundo_close_on_revert = 1
+
+" DetectIndent
+au BufReadPost * :DetectIndent
+let g:detectindent_preferred_indent = 4
+let g:detectindent_preferred_expandtab = 1

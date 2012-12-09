@@ -30,6 +30,7 @@ Bundle 'utl.vim'
 Bundle 'hsitz/VimOrganizer'
 Bundle 'sjl/gundo.vim'
 Bundle 'gerw/vim-HiLinkTrace'
+Bundle 'aclindsa/detectindent'
 
 " perl
 Bundle 'petdance/vim-perl'
