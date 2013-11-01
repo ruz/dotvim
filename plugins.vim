@@ -9,14 +9,18 @@ hi! link ShowMarksHLm LineNr
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=2
 let g:syntastic_perl_flags='-I./ -Ilib/'
+let g:syntastic_check_on_wq=0
+let g:syntastic_error_symbol='✗'
+let g:syntastic_warning_symbol='⚠'
+
 
 " delimitMate
-let g:delimitMate_expand_space = 1
-let g:delimitMate_expand_cr = 1
+let g:delimitMate_expand_space = 1 " Turns on/off the expansion of <Space>
+let g:delimitMate_expand_cr = 1    " Turns on/off the expansion of <CR>
 
 " nerdtree
 " Ctrl-P to Display the file browser tree
-nmap <C-P> :NERDTreeToggle<CR>
+nmap <C-P> :NERDTreeTabsToggle<CR>
 " ,p to show current file in the tree
 nmap <leader>p :NERDTreeFind<CR>
 
@@ -135,3 +139,24 @@ let g:gundo_close_on_revert = 1
 au BufReadPost * :DetectIndent
 let g:detectindent_preferred_indent = 4
 let g:detectindent_preferred_expandtab = 1
+
+" Switch
+" making some of the switches defined for ruby work in HAML files
+autocmd FileType haml let b:switch_definitions =
+      \ [
+      \   g:switch_builtins.ruby_hash_style,
+      \   g:switch_builtins.ruby_string,
+      \   g:switch_builtins.true_false,
+      \   g:switch_builtins.true_false,
+      \ ]
+
+let g:blockle_mapping = '<Leader>B'
+
+" vim-dispatch
+autocmd FileType ruby let b:dispatch = 'rspec %'
+
+let g:unite_source_history_yank_enable = 1
+let g:unite_enable_start_insert = 1
+let g:unite_source_file_mru_long_limit = 100
+let g:unite_source_directory_mru_long_limit = 100
+call unite#filters#matcher_default#use(['matcher_fuzzy'])

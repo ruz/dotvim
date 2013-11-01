@@ -1,3 +1,41 @@
+* 2013-08-28
+  - fix startup echo messages redirect
+  - prevent multiple after.vim loads
+
+* 2013-08-27
+  - writer.vim
+  - faster Esc into normal mode (ttimeoutlen=50)
+  - syntastic fixes (no re-check on exit, fancy marks)
+  - vim-dispatch (async external commands with output in vim)
+  - unite.vim (generic user-interface plugin)
+
+* 2013-07-09
+  - prompt before deleting bundles directory
+  - annotate bundles.vim
+  - blockle.vim plugin
+  - README updates
+
+* 2013-04-01
+  - elixir language support
+
+* 2013-03-21
+  - NERDTreeTabs plugin
+
+* 2012-01-24 (II)
+  - resurrect old vim-powerline project. The new one has installation issues
+    on OSX
+
+* 2012-01-24
+  - .vimrc.before and .vimrc.after support
+  - removed .vim_local and .local.vim support
+  - reprecated .local-before and .local-after
+  - updated repo for vim-slim plugin
+  - powerline upgraded to the new pythin based project. (the old one is
+    deprecated)
+
+* 2012-12-25
+  - 'switch' plugin
+
 * 2012-09-05
   - tomorrow-theme
   - changed yankring_history file location to ~/.backup/

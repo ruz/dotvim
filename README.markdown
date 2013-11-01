@@ -30,6 +30,7 @@ announcements of new versions, tips, etc.
 * [Macros](#macros)
 * [Interesting Plugins](#interesting)
   * [nerdtree](#nerdtree)
+  * [nerdtree-tabs](#nerdtreetabs)
   * [nerdcommenter](#nerdcommenter)
   * [Command-T](#Command-T)
   * [CtrlP](#CtrlP)
@@ -44,17 +45,20 @@ announcements of new versions, tips, etc.
   * [ack.vim](#ack.vim)
   * [vim-indentobject](#vim-indentobject)
   * [greplace.vim](#greplace.vim)
-  * [vim-powerline](#vim-powerline)
+  * [vim-powerline](#powerline)
   * [threesome.vim](#threesome.vim)
   * [vim-endwise](#vim-endwise)
   * [delimitMate](#delimitMate)
-  * [Gundo](#dgundo)
+  * [Gundo](#gundo)
+  * [vim-dispatch](#vim-dispatch)
+  * [unite.vim](#unite.vim)
 * [Ruby/Rails Support](#ruby)
   * [vim-rails](#vim-rails)
   * [vim-bundler](#vim-bundler)
   * [vim-rake](#vim-rake)
   * [vim-textobj-rubyblock](#vim-textobj-rubyblock)
   * [vim-ruby-refactoring](#vim-ruby-refactoring)
+  * [blockle.vim](#blockle)
   * [apidock.vim](#apidock.vim)
 * [Org mode and support plugins](#orgmode)
   * [calendar](#calendar)
@@ -78,15 +82,25 @@ From your homedirectory (on Linux/Mac OSX):
 * `ln -sfn dotvim .vim`
 * `ln -sfn dotvim/vimrc .vimrc`
 * `cd .vim; make install`
-* create ~/.local.vim if you want to have some
-  local/personal settings you don't want to commit into the repo
 
-> IMPORTANT: **always** add a `colorscheme` to your `~/.local-after.vim` file,
-> even if you use the defaults scheme add `colorscheme default`. Othewise you
-> will get a highlighting error `"E411: highlight group not found: Normal"`
-> during vim startup.
 
-Note: if you already have `~/.vim` `~/.vimrc` REMOVE THEM (you might want to backup them first :)
+  > Note: if you already have `~/.vim` `~/.vimrc` REMOVE THEM (you might want to backup them first :)
+
+* create `~/.vimrc.before` or `~/.vimrc.after` if you want to have some
+  local/personal settings you don't want to commit into the repo. see "[Local Configuration](#local)"
+
+
+  > IMPORTANT: **always** add a `colorscheme` to your `~/.vimrc.after` file.
+  > Even if you use the defaults scheme add `colorscheme default`. Othewise you
+  > will get a highlighting error `"E411: highlight group not found: Normal"`
+  > during vim startup.
+
+
+> IMPORTANT: [vim-powerline](#powerline) requires some extra glyphs to work properly.
+> Check the official documentation on
+> [font installation](http://lokaltog.github.com/powerline/overview.html#font-installation)
+> and follow the instructions. If you do not, then strange symbols will be
+> displayed instead. While this is not critical, it remains pretty annoying.
 
 [top](#top)
 
@@ -121,32 +135,33 @@ Check out the 'plugins.vim' and 'after/plugin/bindings.vim' files for more...
 
 For easy upgrades its preferable not to change the dotvim configuration files.
 Instead you can add your own local configuration into one of the local override
-files. There are several override files supported by dotvim:
+files. There are several override files supported by dotvim.
 
-Files loaded **before** the plugins:
+They are loaded in the following order:
 
-* `~/.vim_local` - deprecated
-* `~/.vim-before.vim`
+* base dotvim configuration (global, plugin configurations, bindings, macros)
+* `~/.local-before.vim` _[deprecated]_
+* `~/.vimrc.before`
+
+  Loaded **before** the plugins
 
   This is where you should pre-set various plugin flags, enable/disable options
-  etc. This is for things you would normally put into yoru vimrc file.
+  etc. This is for things you would normally put into your vimrc file.
 
-Files loaded **after** the plugins:
+* `~/.gvimrc.before` _[when GUI running]_
+* vim plugins
+* dotvim bindings and overrides (loaded from `~/.vim/after.vim`)
+* `.local-after.vim` _[deprecated]_
+* `.vimrc.after`
 
-* `~/.local.vim` - deprecated
-* `~/.local-after.vim`
+  Loaded **after** the plugins
 
   This is where you can override settings set by plugins that have no
-  customization options etc.
+  customization options.
 
-Configuration files are loaded in the following order:
+* `.gvimrc.after` _[when GUI running]_
 
-* dotvim configuration
-* .local-before.vim
-* plugins
-* dotvim bindings and overrides
-* .local.vim
-* .local-after.vim
+[top](#top)
 
 <a name=backups>
 #### Backups
@@ -208,8 +223,15 @@ execute it with `@a`.
 
     hax0r vim script to give you a tree explorer
 
-    * `Ctrl-P` - open directory browser
+    * `Ctrl-P` - open directory browser (**Note:** this is now handled by
+      [nerdtree-tabs](#nerdtreetabs) (see below))
     * `,p` - to find and highlight the currently open file in the tree
+
+*   <a name=nerdtreetabs>[nerdtree-tabs](https://github.com/jistr/vim-nerdtree-tabs) ([top](#top))
+
+    NERDTree and tabs together in Vim, painlessly
+
+    * `Ctrl-P` - open directory browser
 
 *   <a name=nerdcommenter>[nerdcommenter](http://github.com/scrooloose/nerdcommenter) ([top](#top))
 
@@ -369,7 +391,7 @@ execute it with `@a`.
     Usage is similar to textobj-rubyblock, just with `i` instead of `r`
 
     * `vai` / `vii` - select indent block including / excluding the outer lines
-    * ...
+    * `yai` / `yii` - yank ...
 
 *   <a name=greplace.vim>[greplace.vim](http://github.com/vim-scripts/greplace.vim) ([top](#top))
 
@@ -384,9 +406,22 @@ execute it with `@a`.
     * `:Greplace` - Incorporate the modifications from the replace buffer into
       the corresponding files.
 
-*   <a name=vim-powerline>[vim-powerline](TBD) ([top](#top))
+*   <a name=powerline>[vim-powerline](https://github.com/astrails/vim-powerline) ([top](#top))
 
-    TBD
+    Add a nice status line to Vim
+
+    > Note: the old
+    > [Lokaltog/vim-powerline](https://github.com/Lokaltog/vim-powerline)
+    > project is now deprecated in favor of
+    > [Lokaltog/powerline](https://github.com/Lokaltog/vim-powerline) which is
+    > python based and is supposed to be better.
+    >
+    > Unfortunately I coudn't get it to work on my OSX machine. Even more
+    > unfortunately the old project has changed default branch to `new-plugin`
+    > which is empty except for the README file announcing the new project
+    > location. This makes it impossible to use with vundle. The solution for
+    > now is that I forked the original plugin project and make it available
+    > under `astrails` account in a form suitable for vundle.
 
 *   <a name=threesome.vim>[threesome.vim](https://github.com/sjl/threesome.vim) ([top](#top))
 
@@ -441,6 +476,38 @@ execute it with `@a`.
 
     * `,u` - toggle undo window
     * `:h gundo.txt` - more help
+
+*   <a name=vim-dispatch>[vim-dispatch](https://github.com/tpope/vim-dispatch) ([top](#top))
+
+    Asynchronous build and test dispatcher from Tpope.
+
+    This plugin allows to run sync/async builds and other shell commands in
+    background, with progress support.
+
+    try `:Dispatch` from inside a Rails rspec file. `:h dispatch` for more
+    info.
+
+*   <a name=unite.vim>[unite.vim][unite] ([top](#top))
+
+    Search and display information from arbitrary sources like files, buffers,
+    recently used files or registers.
+
+    This plugins is to powerful to present here, read the [documentation][unite].
+
+    Just to give you the taste of it, try:
+
+    `:Unite -no-start-insert -auto-preview colorscheme`
+
+    Then try to navigate up and down and see what happens ;)
+
+[unite]: https://github.com/Shougo/unite.vim
+
+*   <a name=switch>[Switch](https://github.com/AndrewRadev/switch.vim) ([top](#top))
+
+    A plugin to switch segments of text with predefined replacements
+
+    it will switch `"foo"` to `'foo'` to `:foo`. or `{:foo => bar}` to `{foo: bar}`,
+    etc. See `:h switch` for more.
 
 [top](#top)
 
@@ -506,6 +573,15 @@ execute it with `@a`.
     * `,rriv` :RRenameInstanceVariable - Rename Instance Variable (visual selection)
     * `,rem`  :RExtractMethod          - Extract Method (visual selection)
 
+*   <a name=blockle)>[blockle.vim](https://github.com/vim-scripts/blockle.vim) ([top](#top))
+
+    Toggle ruby blocks style, e.g `{}` to `do .. end`
+
+    * `,B` - toggle block style
+
+    > NOTE: thre is an unfortunate interaction with delimitMate, the opening
+    > brase gets completed. i.e. you get `{} ... }`
+
 *   <a name=apidock.vim>[apidock.vim](https://github.com/alexandrov/apidock.vim) ([top](#top))
 
     Vim plugin that searches http://apidock.com Ruby, Rails, and RSpec docs from within Vim.
@@ -513,7 +589,6 @@ execute it with `@a`.
     * `RR` - Search the Rails docs for the word under the cursor.
     * `RB` - Search the Ruby docs for the word under the cursor.
     * `RS` - Search the RSpec docs for the word under the cursor.
-
 
 [top](#top)
 
@@ -647,7 +722,7 @@ used intependently.
 
     syntax for [Jade](http://jade-lang.com/)
 
-*   [vim-slim](https://github.com/bbommarito/vim-slim)
+*   [vim-slim](https://github.com/slim-template/vim-slim)
 
     [Slim](http://slim-lang.com/) syntax support.
 
@@ -673,6 +748,15 @@ used intependently.
     Smart Space key for Vim
 
     press SPACE to repeat last motion command
+
+ *  [vim-gist](http://github.com/mattn/gist-vim)
+
+    create gists on github
+
+    - `:Gist` - gist the buffer
+    - `:'<,'>Gist` - gist selection
+    - `:Gist -p` - private gist
+    - :h Gist.vim
 
 
 [top](#top)
@@ -728,6 +812,18 @@ To use this feature: just include the file from your ~/.local.vim:
 
 [top](#top)
 
+<a name=writer>
+#### writer.vim
+
+My attempt to make vim look like iWriter ;)
+You can read about the details on [our blog][blog_writer].
+
+In short, just do `:so ~/.vim/writer.vim` when you are going to do some plain
+text writing.
+
+[blog_writer]: http://astrails.com/blog/2013/8/12/writing-markdown-with-style-in-vim
+
+[top](#top)
 
 #### Copyright
 
