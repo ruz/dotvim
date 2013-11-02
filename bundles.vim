@@ -78,7 +78,7 @@ Bundle 'petdance/vim-perl'
 " ruby refactoring
 " apidock.com docs integration
 " toggle ruby blocks style
-Bundle 'vim-scripts/blockle.vim'
+" Bundle 'vim-scripts/blockle.vim'
 
 " color themes
 Bundle 'altercation/vim-colors-solarized'
@@ -87,7 +87,7 @@ Bundle 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
 
 " syntax support
 
-Bundle 'vim-ruby/vim-ruby'
+"Bundle 'vim-ruby/vim-ruby'
 Bundle 'tsaleh/vim-tmux'
 Bundle 'Puppet-Syntax-Highlighting'
 Bundle 'JSON.vim'
