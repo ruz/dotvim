@@ -17,6 +17,7 @@ let g:syntastic_warning_symbol='⚠'
 " delimitMate
 let g:delimitMate_expand_space = 1 " Turns on/off the expansion of <Space>
 let g:delimitMate_expand_cr = 1    " Turns on/off the expansion of <CR>
+let g:delimitMate_jump_expansion = 1
 
 " nerdtree
 " Ctrl-P to Display the file browser tree
