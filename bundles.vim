@@ -60,6 +60,8 @@ Bundle 'AndrewRadev/switch.vim'
 " async external commands with output in vim
 Bundle 'tpope/vim-dispatch'
 " trace highlighting code 
+Bundle 'gerw/vim-HiLinkTrace'
+" detect indentation style and adjust settings
 Bundle 'aclindsa/detectindent'
 
 " perl
