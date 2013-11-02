@@ -42,7 +42,7 @@ Bundle 'astrails/vim-powerline'
 Bundle 'sjl/threesome.vim'
 " plugin for visually displaying indent levels
 " end certain structures automatically, e.g. begin/end etc.
-Bundle 'tpope/vim-endwise'
+"Bundle 'tpope/vim-endwise'
 " automatic closing of quotes, parenthesis, brackets, etc.
 Bundle 'Raimondi/delimitMate'
 " calendar, duh!
