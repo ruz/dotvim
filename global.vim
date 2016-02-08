@@ -4,7 +4,7 @@ syntax on
 filetype plugin indent on
 
 " prevent vim from adding that stupid empty line at the end of every file
-set noeol
+"set noeol
 set binary
 
 " utf-8/unicode support
