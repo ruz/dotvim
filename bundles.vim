@@ -44,7 +44,7 @@ Bundle 'sjl/threesome.vim'
 " end certain structures automatically, e.g. begin/end etc.
 "Bundle 'tpope/vim-endwise'
 " automatic closing of quotes, parenthesis, brackets, etc.
-Bundle 'Raimondi/delimitMate'
+"Bundle 'Raimondi/delimitMate'
 " calendar, duh!
 Bundle 'calendar.vim--Matsumoto'
 " A Narrow Region Plugin (similar to Emacs)
