@@ -65,7 +65,7 @@ Bundle 'gerw/vim-HiLinkTrace'
 Bundle 'aclindsa/detectindent'
 
 " perl
-Bundle 'petdance/vim-perl'
+Bundle 'vim-perl/vim-perl'
 
 " Ruby/Rails
 
