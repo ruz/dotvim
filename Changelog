@@ -1,3 +1,44 @@
+* unreleased
+
+* 2015-09-0
+  - jsx and javascript syntax highlighting
+
+* 2015-07-21
+  - mintplant/vim-literate-coffeescript repo is gone. replaced with a cached
+  copy at vitaly/vim-literate-coffeescript
+
+* 2015-06-19
+  - vim-i18n plugin for extracting i18n strings into .yml files
+  - syntax support: mustashe-handlebars, literate coffeescript and React cjsx
+  - upgraded clojure syntax support
+  - vim plugin for emmet.io HTML/CSS workflow
+  - improved CtrlP ignore list to skip image files
+  - editorconfig.org file support
+  - disabled chrisbra/NrrwRgn
+  - rust language support
+  - string interpolation for easy surround (tyanks @erez-rabih)
+
+* 2014-11-25
+  - fix a deprecation warning by the latest NeoBundle version.
+
+* 2014-11-20
+  - upgrade to NeoBundle. IMPORTANT: See readme for upgrade instructions
+  - vim-airline. Replacement for vim-powerline. IMPORTANT: See readme for upgrade instructions. Also: https://github.com/bling/vim-airline
+  - disable gitgutter in writer.vim
+  - reworked makefile. new targets: edit and update.
+  - vim-less syntax support
+
+* 2014-02-05
+  - golang syntax support (thanks @torkale)
+  - josemarluedke/vim-rspec - lightweight Rspec runner for Vim (@torkale)
+  - girblade/vim-gitgutter - it diff in the gutter (sign column) and stages/reverts hunks (@torkale)
+  - backupskip for /private/tmp and ~/tmp.
+    skip backups on OSX temp dir, for crontab -e to properly work
+  - replaced threesome by splice. splice is a newer version of threesome by
+    the same author.
+  - Dockerfile syntax support
+  - replace ack by ag - faster better ack (@torkale)
+
 * 2013-08-28
   - fix startup echo messages redirect
   - prevent multiple after.vim loads

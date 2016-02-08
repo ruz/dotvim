@@ -73,7 +73,7 @@ nmap <leader>m :CtrlPBufTag<cr>
 nmap <leader>M :CtrlPBufTagAll<cr>
 
 let g:ctrlp_clear_cache_on_exit = 1
-" ctrlp leaves stale caches behind if there is another vim process runnin
+" ctrlp leaves stale caches behind if there is another vim process running
 " which didn't use ctrlp. so we clear all caches on each new vim invocation
 cal ctrlp#clra()
 
@@ -87,7 +87,9 @@ let g:ctrlp_max_height = 40
 let g:ctrlp_switch_buffer = 1
 
 " if in git repo - use git file listing command, should be faster
-let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files --exclude-standard -cod']
+" using this option overrides standard CtrlP ignore list based on vim wildignore
+" so use 'grep -v ...' to exclude common image and font files from the search
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files --exclude-standard -cod | grep -viE "\.(png|gif|jpg|gz|woff|eot|tiff|ttf|otf)$"']
 
 " open multiple files with <c-z> to mark and <c-o> to open. v - opening in
 " vertical splits; j - jump to first open buffer; r - open first in current buffer
@@ -104,9 +106,9 @@ nmap <leader>f :let @/="\\<<C-R><C-W>\\>"<CR>:set hls<CR>:silent Ggrep -w "<C-R>
 
 " same in visual mode
 :vmap <leader>f y:let @/=escape(@", '\\[]$^*.')<CR>:set hls<CR>:silent Ggrep -F "<C-R>=escape(@", '\\"#')<CR>"<CR>:ccl<CR>:cw<CR><CR>
-" Ack
-" ,a for Ack
-nmap <leader>k :Ack<space>
+" Ag
+" ,a for Ag
+nmap <leader>k :Ag<space>
 
 " vim-indentobject
 " add Markdown to the list of indentation based languages
@@ -161,3 +163,11 @@ let g:unite_enable_start_insert = 1
 let g:unite_source_file_mru_long_limit = 100
 let g:unite_source_directory_mru_long_limit = 100
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
+
+" vim-rspec
+map <Leader>r :call RunNearestSpec()<CR>
+
+" vim-airline
+let g:airline_powerline_fonts=1
+let g:airline_theme='light' " dark simple badwolf solarized solarized2
+set noshowmode

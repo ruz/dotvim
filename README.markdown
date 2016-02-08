@@ -7,8 +7,16 @@ All the right plugins are in. Nerdtree, CtrlP, you name it.
 The focus is on supporting Rails, but there is a lot of generic stuff too, so
 it will surely serve you well with any language of your choice.
 
-The config is using [Vundle](http://github.com/gmarik/vundle) for easy
-upgrading.
+The config is using [NeoBundle](https://github.com/Shougo/neobundle.vim) for easy
+upgrading. The list of installed bundles is in the `bundles.vim`
+
+> IMPORTANT:
+> - Vundle was replaced with
+>   [Neobundle](https://github.com/Shougo/neobundle.vim). See [Neobundle
+>   upgrade instructions](#upgrade_neobundle) if you have an older Vundle based
+>   install.
+> - vim-powerline was replaced with [vim-airline](#airline). Please see
+>   [installation instructions](#installation_note)
 
 *Some* help tips are provided for *some* of the plugins. please check out the
 plugin's docs for more info.
@@ -23,6 +31,7 @@ announcements of new versions, tips, etc.
 #### Contents
 
 * [Installation](#installation)
+* [Neobundle upgrade](#upgrade_neobundle)
 * [General Configuration](#general)
 * [Local configuration](#local)
 * [Backups](#backups)
@@ -45,13 +54,18 @@ announcements of new versions, tips, etc.
   * [ack.vim](#ack.vim)
   * [vim-indentobject](#vim-indentobject)
   * [greplace.vim](#greplace.vim)
-  * [vim-powerline](#powerline)
-  * [threesome.vim](#threesome.vim)
+  * [vim-airline](#airline)
+  * [splice.vim](#splice.vim)
   * [vim-endwise](#vim-endwise)
   * [delimitMate](#delimitMate)
   * [Gundo](#gundo)
   * [vim-dispatch](#vim-dispatch)
   * [unite.vim](#unite.vim)
+  * [vim-gitgutter](#gitgutter)
+  * [vim-i18n](#i18n)
+  * [switch](#switch)
+  * [emmet-vim](#emmet)
+  * [editorconfig](#editorconfig)
 * [Ruby/Rails Support](#ruby)
   * [vim-rails](#vim-rails)
   * [vim-bundler](#vim-bundler)
@@ -78,7 +92,7 @@ announcements of new versions, tips, etc.
 
 From your homedirectory (on Linux/Mac OSX):
 
-* `git clone git://github.com/astrails/dotvim.git`
+* `git clone https://github.com/astrails/dotvim.git # or git@github.com:astrails/dotvim.git for ssh`
 * `ln -sfn dotvim .vim`
 * `ln -sfn dotvim/vimrc .vimrc`
 * `cd .vim; make install`
@@ -89,18 +103,35 @@ From your homedirectory (on Linux/Mac OSX):
 * create `~/.vimrc.before` or `~/.vimrc.after` if you want to have some
   local/personal settings you don't want to commit into the repo. see "[Local Configuration](#local)"
 
+<a name=installation_note>
+> **IMPORTANT**
+> - **always** add a `colorscheme` to your `~/.vimrc.after` file.  Even if you
+>   use the defaults scheme add `colorscheme default`. Othewise you will get a
+>   highlighting error `"E411: highlight group not found: Normal"` during vim
+>   startup.
+> - [vim-airline](#airline) requires some extra glyphs to work properly.  Check
+>   the official documentation on [font >
+>   installation](https://github.com/bling/vim-airline#integrating-with-powerline-fonts)
+>   and follow the instructions. If you do not, then strange symbols will be
+>   displayed instead (can be fixed by configuring it to use regular fonts. see
+>   help)
 
-  > IMPORTANT: **always** add a `colorscheme` to your `~/.vimrc.after` file.
-  > Even if you use the defaults scheme add `colorscheme default`. Othewise you
-  > will get a highlighting error `"E411: highlight group not found: Normal"`
-  > during vim startup.
+[top](#top)
 
+<a name=upgrade_neobundle>
+#### Neobundle Upgrade
 
-> IMPORTANT: [vim-powerline](#powerline) requires some extra glyphs to work properly.
-> Check the official documentation on
-> [font installation](http://lokaltog.github.com/powerline/overview.html#font-installation)
-> and follow the instructions. If you do not, then strange symbols will be
-> displayed instead. While this is not critical, it remains pretty annoying.
+Dotvim was updated to use Neobundle instead of Vundle. NeoBundle is mostly
+similar but supports more ways to install bundles, better install, locked
+revisions and more.
+
+To upgrade from an older Vundle based setup simply pull the latest version and
+run `make`.
+
+> Note: if you modified your `bundles.vim` you will need to replace all
+> instances of `Bundle` with `NeoBundle` in it. Until you do your vim might
+> print error messages during startup. ignore them and fix the `bundles.vim`,
+> then run `make`.
 
 [top](#top)
 
@@ -140,6 +171,11 @@ files. There are several override files supported by dotvim.
 They are loaded in the following order:
 
 * base dotvim configuration (global, plugin configurations, bindings, macros)
+* `~/.vimrc.bundles`
+
+  Loads additional bundles inside the `neobundle#begin/end` block.
+  Should contain lines like `NeoBundle 'my-custom/bundle'`
+
 * `~/.local-before.vim` _[deprecated]_
 * `~/.vimrc.before`
 
@@ -374,13 +410,20 @@ execute it with `@a`.
     * `:AlignSEPARATORS` - align on separators
     * `:h align` - see help for more options
 
-*   <a name=ack.vim>[ack.vim](http://github.com/mileszs/ack.vim) ([top](#top))
+*   <a name=ag.vim>[ag.vim](http://github.com/rking/ag.vim) ([top](#top))
 
-    This plugin is a front for the Perl module App::Ack. Ack can be used as a replacement for 99% of the uses of grep.
+    This plugin is a front for ag, A.K.A.
+    [the_silver_searcher](https://github.com/ggreer/the_silver_searcher).  Ag can
+    be used as a replacement for 153% of the uses of `ack`.  This plugin will allow
+    you to run ag from vim, and shows the results in a split window.
 
-    * `:Ack [options] {pattern} [{directory}]` - grep for the pattern in side directory and open result in a QuickFix window
-    * `:Ack --ruby ...` - search only ruby files.
-    * `:h Ack` - more help about Ack
+    * `:Ag [options] {pattern} [{directory}]` - grep for the pattern in side directory and open result in a QuickFix window
+    * `:h Ag` - more help about Ag
+
+    Installation:
+
+    * on OSX: `brew install the_silver_searcher` or `port install the_silver_searcher`
+    * on Ubuntu: `apt-get install silversearcher-ag`
 
 *   <a name=vim-indentobject>[vim-indentobject](https://github.com/austintaylor/vim-indentobject) ([top](#top))
 
@@ -406,59 +449,53 @@ execute it with `@a`.
     * `:Greplace` - Incorporate the modifications from the replace buffer into
       the corresponding files.
 
-*   <a name=powerline>[vim-powerline](https://github.com/astrails/vim-powerline) ([top](#top))
+*   <a name=airline>[vim-airline](https://github.com/bling/vim-airline) ([top](#top))
 
-    Add a nice status line to Vim
+    Lean & mean status/tabline for vim that's light as air.
 
-    > Note: the old
-    > [Lokaltog/vim-powerline](https://github.com/Lokaltog/vim-powerline)
-    > project is now deprecated in favor of
-    > [Lokaltog/powerline](https://github.com/Lokaltog/vim-powerline) which is
-    > python based and is supposed to be better.
-    >
-    > Unfortunately I coudn't get it to work on my OSX machine. Even more
-    > unfortunately the old project has changed default branch to `new-plugin`
-    > which is empty except for the README file announcing the new project
-    > location. This makes it impossible to use with vundle. The solution for
-    > now is that I forked the original plugin project and make it available
-    > under `astrails` account in a form suitable for vundle.
+    A better replacement for vim-powerline. Optimized for speed; it loads in
+    under a millisecond.
 
-*   <a name=threesome.vim>[threesome.vim](https://github.com/sjl/threesome.vim) ([top](#top))
+    [Install fonts](https://github.com/bling/vim-airline#integrating-with-powerline-fonts)
+    for best results.
+
+*   <a name=splice.vim>[splice.vim](https://github.com/sjl/splice.vim) ([top](#top))
 
     A plugin for resolving conflicts during three-way merges.
 
     Add the following lines to ~/.gitconfig to use
 
     [merge]
-    tool = threesome
+    tool = splice
 
-    [mergetool "threesome"]
-    cmd = "mvim -f $BASE $LOCAL $REMOTE $MERGED -c 'ThreesomeInit'"
+    [mergetool "splice"]
+    cmd = "vim -f $BASE $LOCAL $REMOTE $MERGED -c 'SpliceInit'"
     trustExitCode = true
 
     Bindings:
 
-    * `\g` - switch to grid view
-    * `\l` - switch to loupe view
-    * `\c` - switch to compare view
-    * `\p` - switch to path view
+    * `-g` - switch to grid view
+    * `-l` - switch to loupe view
+    * `-c` - switch to compare view
+    * `-p` - switch to path view
 
-    * `\o` - select the original file
-    * `\1` - select file one
-    * `\2` - select file two
-    * `\r` - select the results file
+    * `-o` - select the original file
+    * `-1` - select file one
+    * `-2` - select file two
+    * `-r` - select the results file
 
-    * `\n` - next unresolved conflict
-    * `\N` - prev unresolved conflict
+    * `-n` - next unresolved conflict
+    * `-N` - prev unresolved conflict
 
-    * `\<space>` - cycle layout
-    * `\s` - toggle scrolllocking
-    * `\d` - cycle diff combinations
-    * `\D` - turn off all diffs
+    * `-<space>` - cycle layout
+    * `-s` - toggle scrolllocking
+    * `-d` - cycle diff combinations
+    * `-D` - turn off all diffs
 
-    * `\CC` - exits vim with error code (like :cquit). this will indicate to git that merge resolution failed
+    * `-CC` - exits vim with error code (like :cquit). this will indicate to git that merge resolution failed
+    * `-q`  - exits vim with success; this will indicate to git that merge succeeded
 
-    * `:h threesome` - you should probably read it ;)
+    * `:h splice` - you should probably read it ;)
 
 *   <a name=vim-endwise>[vim-endwise](http://github.com/tpope/vim-endwise) ([top](#top))
 
@@ -502,12 +539,59 @@ execute it with `@a`.
 
 [unite]: https://github.com/Shougo/unite.vim
 
+*   <a name=gitgutter>[Vim Git Gutter](https://github.com/airblade/vim-gitgutter) ([top](#top))
+    A Vim plugin which shows a git diff in the 'gutter' (sign column).
+    It shows whether each line has been added, modified, and where lines have been removed.
+
+    ![screenshot](https://raw.github.com/airblade/vim-gitgutter/master/screenshot.png)
+
+    In the screenshot above you can see:
+
+    * Line 15 has been modified.
+    * Lines 21-24 are new.
+    * A line or lines were removed between lines 25 and 26.
+
+    Commands:
+
+    * `:GitGutterDisable`
+    * `:GitGutterEnable`
+    * `:GitGutterToggle`
+    * `:GitGutterSignsEnable`
+    * `:GitGutterSignsDisable`
+    * `:GitGutterSignsToggle`
+    * `:GitGutterLineHighlightsEnable`
+    * `:GitGutterLineHighlightsDisable`
+    * `:GitGutterLineHighlightsToggle`
+
+    Bindings:
+
+    * `]c` - jump to next hunk
+    * `[c` - jump to previous hunk
+    * `,hs` - stage hunk
+    * `,hr` - revert hunk
+
+    There are quite some customization options. see help.
+
+*   <a name=i18n>[vim-i18n](https://github.com/stefanoverna/vim-i18n) ([top](#top))
+
+    Extracts i18n strings from source files into .yml file.
+
+    * `,z` - extract selected string
+
 *   <a name=switch>[Switch](https://github.com/AndrewRadev/switch.vim) ([top](#top))
 
     A plugin to switch segments of text with predefined replacements
 
     it will switch `"foo"` to `'foo'` to `:foo`. or `{:foo => bar}` to `{foo: bar}`,
     etc. See `:h switch` for more.
+
+*   <a name=emmet>[Switch](https://github.com/mattn/emmet-vim) ([top](#top))
+
+    [emmet.io](http://emmet.io) like html/css workflow plugin.
+
+*   <a name=editorconfig>[editorconfig-vim](https://github.com/editorconfig/editorconfig-vim) ([top](#top))
+
+    [.editorconfig](http://editorconfig.org) file support.
 
 [top](#top)
 
@@ -589,6 +673,20 @@ execute it with `@a`.
     * `RR` - Search the Rails docs for the word under the cursor.
     * `RB` - Search the Ruby docs for the word under the cursor.
     * `RS` - Search the RSpec docs for the word under the cursor.
+
+*   <a name=vim-rspec>[vim-rspec](https://github.com/josemarluedke/vim-rspec) ([top](#top))
+
+    Lightweight Rspec runner for Vim.
+
+    Commands are self explanatory:
+
+    * `:call RunCurrentSpecFile()`
+    * `:call RunNearestSpec()`
+    * `:call RunLastSpec()`
+
+    Bindings:
+
+    * `,r` - `RunNearestSpec`
 
 [top](#top)
 
@@ -729,6 +827,36 @@ used intependently.
 *   stylus
 
     TBD
+
+*   [vim-gocode](https://github.com/Blackrush/vim-gocode)
+
+    Golang syntax support
+
+*   [Dockerfile.vim](https://github.com/ekalinin/Dockerfile.vim)
+
+    Syntax for [Docker](http://www.docker.io) build files.
+
+*   [vim-less](https://github.com/groenewege/vim-less)
+
+    Syntax for [LESS](http://lesscss.org/).
+
+*   [vim-mustache-handlebars](https://github.com/mustache/vim-mustache-handlebars)
+
+    Syntax for [mustache](http://mustache.github.io) and
+    [handlebars](http://handlebarsjs.com) templates.
+
+*   Clojure syntax support by the following plugins:
+
+    [vim-clojure-static](http://github.com/guns/vim-clojure-static)
+    [vim-fireplace](http://github.com/tpope/vim-fireplace)
+    [rainbow_parentheses](http://github.com/kien/rainbow_parentheses.vim)
+
+    rainbow_parentheses can be useful to other languages as well ;)
+
+*   [Rust](http://www.rust-lang.org) support.
+
+    using files from [rust repository](https://github.com/rust-lang/rust)
+
 
 [top](#top)
 
