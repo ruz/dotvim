@@ -169,7 +169,9 @@ call unite#filters#matcher_default#use(['matcher_fuzzy'])
 " vim-rspec
 map <Leader>r :call RunNearestSpec()<CR>
 
+" solarized
+let g:solarized_termcolors=256
+
 " vim-airline
 let g:airline_powerline_fonts=1
-let g:airline_theme='light' " dark simple badwolf solarized solarized2
 set noshowmode
