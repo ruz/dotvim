@@ -175,3 +175,6 @@ let g:solarized_termcolors=256
 " vim-airline
 let g:airline_powerline_fonts=1
 set noshowmode
+
+" uncomment to define your own bindings for tmux-vim-navigator
+"let g:tmux_navigator_no_mappings = 1

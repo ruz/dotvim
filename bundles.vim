@@ -41,7 +41,7 @@ NeoBundle 'austintaylor/vim-indentobject'
 " global search & replace
 NeoBundle 'greplace.vim'
 " better looking statusline
-NeoBundle 'bling/vim-airline'
+NeoBundle 'vim-airline/vim-airline'
 NeoBundle 'vim-airline/vim-airline-themes'
 " plugin for resolving three-way merge conflicts
 "NeoBundle 'sjl/splice.vim'
@@ -71,6 +71,8 @@ NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'mattn/emmet-vim'
 " editorconfig.org support
 NeoBundle 'editorconfig/editorconfig-vim'
+" tmux + vim = love
+"NeoBundle 'christoomey/vim-tmux-navigator'
 " trace highlighting code 
 NeoBundle 'gerw/vim-HiLinkTrace'
 " detect indentation style and adjust settings
