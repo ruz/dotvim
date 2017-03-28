@@ -58,11 +58,6 @@ set autoindent          " automatically indent new line
 
 set ttimeoutlen=50      " fast Esc to normal mode
 
-" mouse settings
-if has("mouse")
-  set mouse=a
-endif
-set mousehide                           " Hide mouse pointer on insert mode."
 
 " search settings
 set incsearch           " Incremental search
