@@ -35,15 +35,16 @@ NeoBundle 'tpope/vim-surround'
 " vertical alignment tool
 NeoBundle 'tsaleh/vim-align'
 " 'ag' searching integration
-NeoBundle 'rking/ag.vim'
+"NeoBundle 'rking/ag.vim'
 " text object based on indent level (ai, ii)
 NeoBundle 'austintaylor/vim-indentobject'
 " global search & replace
 NeoBundle 'greplace.vim'
 " better looking statusline
 NeoBundle 'bling/vim-airline'
+NeoBundle 'vim-airline/vim-airline-themes'
 " plugin for resolving three-way merge conflicts
-NeoBundle 'sjl/splice.vim'
+"NeoBundle 'sjl/splice.vim'
 " plugin for visually displaying indent levels
 NeoBundle 'Indent-Guides'
 " end certain structures automatically, e.g. begin/end etc.
@@ -76,7 +77,8 @@ NeoBundle 'gerw/vim-HiLinkTrace'
 NeoBundle 'aclindsa/detectindent'
 
 " perl
-Bundle 'vim-perl/vim-perl'
+NeoBundle 'vim-perl/vim-perl'
+NeoBundle 'mileszs/ack.vim'
 
 " Ruby/Rails
 
@@ -97,40 +99,40 @@ Bundle 'vim-perl/vim-perl'
 " lightweight Rspec runner for Vim
 NeoBundle 'josemarluedke/vim-rspec'
 " i18n extraction plugin
-NeoBundle 'stefanoverna/vim-i18n'
+"NeoBundle 'stefanoverna/vim-i18n'
 
 " color themes
 NeoBundle 'altercation/vim-colors-solarized'
-NeoBundle 'tpope/vim-vividchalk'
-NeoBundle 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
+"NeoBundle 'tpope/vim-vividchalk'
+"NeoBundle 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
 
 " syntax support
-NeoBundle 'vim-ruby/vim-ruby'
-NeoBundle 'tsaleh/vim-tmux'
-NeoBundle 'Puppet-Syntax-Highlighting'
+"NeoBundle 'vim-ruby/vim-ruby'
+"NeoBundle 'tsaleh/vim-tmux'
+"NeoBundle 'Puppet-Syntax-Highlighting'
 NeoBundle 'JSON.vim'
-NeoBundle 'tpope/vim-cucumber'
-NeoBundle 'tpope/vim-haml'
+"NeoBundle 'tpope/vim-cucumber'
+"NeoBundle 'tpope/vim-haml'
 NeoBundle 'tpope/vim-markdown'
-NeoBundle 'kchmck/vim-coffee-script'
-NeoBundle 'vitaly/vim-syntastic-coffee'
-NeoBundle 'vim-scripts/jade.vim'
+"NeoBundle 'kchmck/vim-coffee-script'
+"NeoBundle 'vitaly/vim-syntastic-coffee'
+"NeoBundle 'vim-scripts/jade.vim'
 NeoBundle 'wavded/vim-stylus'
-NeoBundle 'slim-template/vim-slim'
-NeoBundle 'elixir-lang/vim-elixir'
-NeoBundle 'Blackrush/vim-gocode'
+"NeoBundle 'slim-template/vim-slim'
+"NeoBundle 'elixir-lang/vim-elixir'
+"NeoBundle 'Blackrush/vim-gocode'
 NeoBundle 'ekalinin/Dockerfile.vim'
 NeoBundle 'groenewege/vim-less'
 NeoBundle 'mustache/vim-mustache-handlebars'
 NeoBundle 'mtscout6/vim-cjsx'
-NeoBundle 'vitaly/vim-literate-coffeescript'
-NeoBundle 'rust-lang/rust', {'rtp': 'src/etc/vim/'}
+"NeoBundle 'vitaly/vim-literate-coffeescript'
+"NeoBundle 'rust-lang/rust', {'rtp': 'src/etc/vim/'}
 NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'mxw/vim-jsx'
 
 " clojure
 "NeoBundle 'VimClojure'
-NeoBundle 'guns/vim-clojure-static'
+"NeoBundle 'guns/vim-clojure-static'
 NeoBundle 'tpope/vim-fireplace'
 NeoBundle 'kien/rainbow_parentheses.vim'
 
