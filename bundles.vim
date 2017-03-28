@@ -77,6 +77,8 @@ NeoBundle 'editorconfig/editorconfig-vim'
 NeoBundle 'gerw/vim-HiLinkTrace'
 " detect indentation style and adjust settings
 NeoBundle 'aclindsa/detectindent'
+" typescript syntax
+NeoBundle 'leafgarland/typescript-vim'
 
 " perl
 NeoBundle 'vim-perl/vim-perl'
