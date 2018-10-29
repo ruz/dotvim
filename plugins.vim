@@ -14,12 +14,6 @@ let g:syntastic_check_on_wq=0
 let g:syntastic_error_symbol='✗'
 let g:syntastic_warning_symbol='⚠'
 
-
-" delimitMate
-let g:delimitMate_expand_space = 1 " Turns on/off the expansion of <Space>
-let g:delimitMate_expand_cr = 1    " Turns on/off the expansion of <CR>
-let g:delimitMate_jump_expansion = 1
-
 " nerdtree
 " Ctrl-P to Display the file browser tree
 nmap <C-P> :NERDTreeTabsToggle<CR>
@@ -35,11 +29,6 @@ vmap <leader>/ :call NERDComment(0, "invert")<cr>
 let Tlist_Show_Menu=1
 nmap <leader>t :TlistToggle<CR>
 
-" sessionman
-nmap <leader>S :SessionList<CR>
-nmap <leader>SS :SessionSave<CR>
-nmap <leader>SA :SessionSaveAs<CR>
-
 let g:Conque_Read_Timeout = 50 " timeout for waiting for command output.
 let g:Conque_TERM = 'xterm'
 " ,sh shell window
@@ -54,10 +43,6 @@ let g:yankring_replace_n_nkey = '<leader>]'
 nmap <leader>y :YRShow<cr>
 " put the yankring_history file in ~/.backup
 let g:yankring_history_dir = '~/.backup'
-
-" rails
-" completing Rails hangs a lot
-"let g:rubycomplete_rails = 1
 
 " command-t
 "nmap <unique> <silent> <Leader>, :CommandT<CR>
@@ -122,20 +107,6 @@ let g:indent_guides_enable_on_vim_startup = 1
 "let g:indent_guides_color_change_percent = 5
 let g:indent_guides_auto_colors=0
 
-" VimClojure
-let g:vimclojure#ParenRainbow = 1
-let g:vimclojure#DynamicHighlighting = 1
-
-" Utl.vim
-if has("mac")
-  let g:utl_cfg_hdl_scm_http_system = "!open '%u'"
-end
-nmap <leader>o :Utl
-
-" VimOrganizer
-au! BufRead,BufWrite,BufWritePost,BufNewFile *.org
-au BufEnter *.org call org#SetOrgFileType()
-
 " Gundo
 nmap <leader>u :GundoToggle<CR>
 let g:gundo_close_on_revert = 1
@@ -145,29 +116,7 @@ au BufReadPost * :DetectIndent
 let g:detectindent_preferred_indent = 4
 let g:detectindent_preferred_expandtab = 1
 
-" Switch
-" making some of the switches defined for ruby work in HAML files
-autocmd FileType haml let b:switch_definitions =
-      \ [
-      \   g:switch_builtins.ruby_hash_style,
-      \   g:switch_builtins.ruby_string,
-      \   g:switch_builtins.true_false,
-      \   g:switch_builtins.true_false,
-      \ ]
-
 let g:blockle_mapping = '<Leader>B'
-
-" vim-dispatch
-autocmd FileType ruby let b:dispatch = 'rspec %'
-
-let g:unite_source_history_yank_enable = 1
-let g:unite_enable_start_insert = 1
-let g:unite_source_file_mru_long_limit = 100
-let g:unite_source_directory_mru_long_limit = 100
-call unite#filters#matcher_default#use(['matcher_fuzzy'])
-
-" vim-rspec
-map <Leader>r :call RunNearestSpec()<CR>
 
 " solarized
 let g:solarized_termcolors=256

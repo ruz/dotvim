@@ -28,14 +28,10 @@ NeoBundle 'YankRing.vim'
 NeoBundle 'tpope/vim-fugitive'
 " syntax checking on save
 NeoBundle 'scrooloose/syntastic'
-" TextMate-style snippets
-NeoBundle 'msanders/snipmate.vim'
 " manipulation of surraunding parens, quotes, etc.
 NeoBundle 'tpope/vim-surround'
 " vertical alignment tool
 NeoBundle 'tsaleh/vim-align'
-" 'ag' searching integration
-"NeoBundle 'rking/ag.vim'
 " text object based on indent level (ai, ii)
 NeoBundle 'austintaylor/vim-indentobject'
 " global search & replace
@@ -43,20 +39,12 @@ NeoBundle 'greplace.vim'
 " better looking statusline
 NeoBundle 'vim-airline/vim-airline'
 NeoBundle 'vim-airline/vim-airline-themes'
-" plugin for resolving three-way merge conflicts
-"NeoBundle 'sjl/splice.vim'
 " plugin for visually displaying indent levels
 NeoBundle 'Indent-Guides'
 " end certain structures automatically, e.g. begin/end etc.
 "NeoBundle 'tpope/vim-endwise'
 " automatic closing of quotes, parenthesis, brackets, etc.
 "NeoBundle 'Raimondi/delimitMate'
-" calendar, duh!
-NeoBundle 'calendar.vim--Matsumoto'
-" A Narrow Region Plugin (similar to Emacs)
-"NeoBundle 'chrisbra/NrrwRgn'
-" url based hyperlinks for text files
-NeoBundle 'utl.vim'
 " A clone of Emacs' Org-mode for Vim
 NeoBundle 'hsitz/VimOrganizer'
 " visual undo tree
@@ -155,22 +143,7 @@ NeoBundle 'mattn/gist-vim'
 " web APIs support
 NeoBundle 'mattn/webapi-vim'
 
-"NeoBundle 'ShowMarks'
-"NeoBundle 'tpope/vim-unimpaired'
-"NeoBundle 'reinh/vim-makegreen'
-
-NeoBundle 'Shougo/vimproc.vim', {
-\ 'build' : {
-\     'windows' : 'tools\\update-dll-mingw',
-\     'cygwin' : 'make -f make_cygwin.mak',
-\     'mac' : 'make -f make_mac.mak',
-\     'linux' : 'make',
-\     'unix' : 'gmake',
-\    },
-\ }
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Shougo/unite-outline'
-NeoBundle 'ujihisa/unite-colorscheme'
+NeoBundle 'Shougo/denite.nvim'
 
 if filereadable(expand("~/.vimrc.bundles"))
   source ~/.vimrc.bundles
