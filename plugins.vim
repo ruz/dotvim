@@ -122,7 +122,9 @@ let g:blockle_mapping = '<Leader>B'
 let g:solarized_termcolors=256
 
 " vim-airline
+let g:airline_extensions = []
 let g:airline_powerline_fonts=1
+let g:airline_highlighting_cache = 1
 set noshowmode
 
 " go-vim
