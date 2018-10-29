@@ -74,3 +74,6 @@ autocmd FileType go nmap <leader>gl  <Plug>(go-metalinter)
 
 noremap <Leader>y "*y
 noremap <Leader>p "*p
+
+" split - 'inversion' of J
+nnoremap K i<CR><Esc>
