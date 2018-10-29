@@ -117,6 +117,8 @@ NeoBundle 'scrooloose/vim-space'
 NeoBundle 'mattn/gist-vim'
 " web APIs support
 NeoBundle 'mattn/webapi-vim'
+" parens
+NeoBundle 'kien/rainbow_parentheses.vim'
 
 NeoBundle 'Shougo/denite.nvim'
 
