@@ -49,8 +49,10 @@ NeoBundle 'Indent-Guides'
 "NeoBundle 'tpope/vim-endwise'
 " automatic closing of quotes, parenthesis, brackets, etc.
 "NeoBundle 'Raimondi/delimitMate'
+" dep of orgmode
+NeoBundle 'tpope/vim-speeddating'
 " A clone of Emacs' Org-mode for Vim
-NeoBundle 'hsitz/VimOrganizer'
+NeoBundle 'jceb/vim-orgmode'
 " visual undo tree
 NeoBundle 'sjl/gundo.vim'
 " switch segments of text with predefined replacements. e.g. '' -> ""
