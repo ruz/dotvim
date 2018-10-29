@@ -63,3 +63,11 @@ nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<cr>
 
 " fast expand current file's directory in command mode
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
+
+" vim-go bindings
+autocmd FileType go nmap <leader>gb  <Plug>(go-build)
+autocmd FileType go nmap <leader>gr  <Plug>(go-run)
+autocmd FileType go nmap <leader>gt  <Plug>(go-test)
+autocmd FileType go nmap <leader>gft  <Plug>(go-test-func)
+autocmd FileType go nmap <leader>gd  <Plug>(go-doc-browser)
+autocmd FileType go nmap <leader>gl  <Plug>(go-metalinter)

@@ -125,5 +125,16 @@ let g:solarized_termcolors=256
 let g:airline_powerline_fonts=1
 set noshowmode
 
-" uncomment to define your own bindings for tmux-vim-navigator
-"let g:tmux_navigator_no_mappings = 1
+" go-vim
+let g:go_fmt_command = "goimports"
+let g:go_highlight_build_constraints = 1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_types = 1
+let g:go_list_type = "quickfix"
+"let g:go_metalinter_autosave = 1
+let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck', 'megacheck', 'structcheck', 'varcheck', 'ineffassign', 'deadcode', 'gotypex']
