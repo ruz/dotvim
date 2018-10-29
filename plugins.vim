@@ -138,3 +138,9 @@ let g:go_highlight_types = 1
 let g:go_list_type = "quickfix"
 "let g:go_metalinter_autosave = 1
 let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck', 'megacheck', 'structcheck', 'varcheck', 'ineffassign', 'deadcode', 'gotypex']
+
+" Terminus
+" I hate mouse support in vim :/
+let g:TerminusMouse = 0
+" vertical bar is to thin and sometimes can not find it
+let g:TerminusInsertCursorShape = 2

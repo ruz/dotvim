@@ -10,6 +10,10 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 " plugin management
 NeoBundleFetch 'Shougo/neobundle.vim'
 
+" Better terminal support: focus events,
+" cursor shape, mouse and bracketed paste
+NeoBundle 'wincent/terminus'
+
 " file tree
 NeoBundle 'scrooloose/nerdtree'
 " file tree and tabs interaction
