@@ -59,74 +59,43 @@ NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'mattn/emmet-vim'
 " editorconfig.org support
 NeoBundle 'editorconfig/editorconfig-vim'
-" tmux + vim = love
-"NeoBundle 'christoomey/vim-tmux-navigator'
 " trace highlighting code 
 NeoBundle 'gerw/vim-HiLinkTrace'
 " detect indentation style and adjust settings
 NeoBundle 'aclindsa/detectindent'
 " typescript syntax
 NeoBundle 'leafgarland/typescript-vim'
+NeoBundle 'ervandew/supertab'
+" snippets
+NeoBundle 'SirVer/ultisnips'
 
 " perl
 NeoBundle 'vim-perl/vim-perl'
 NeoBundle 'mileszs/ack.vim'
 
-" Ruby/Rails
-
-" rails support
-"NeoBundle 'tpope/vim-rails'
-" bundler integration (e.g. :Bopen)
-"NeoBundle 'tpope/vim-bundler'
-" rake integration
-"NeoBundle 'tpope/vim-rake'
-" A custom text object for selecting ruby blocks (ar/ir)
-"NeoBundle 'nelstrom/vim-textobj-rubyblock'
-" ruby refactoring
-"NeoBundle 'ecomba/vim-ruby-refactoring'
-" apidock.com docs integration
-"NeoBundle 'apidock.vim'
-" toggle ruby blocks style
-"NeoBundle 'vim-scripts/blockle.vim'
-" lightweight Rspec runner for Vim
-NeoBundle 'josemarluedke/vim-rspec'
-" i18n extraction plugin
-"NeoBundle 'stefanoverna/vim-i18n'
-
 " color themes
 NeoBundle 'altercation/vim-colors-solarized'
-"NeoBundle 'tpope/vim-vividchalk'
-"NeoBundle 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
+
+" go
+"NeoBundle 'Blackrush/vim-gocode'
+NeoBundle 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
+NeoBundle 'mdempsky/gocode', {'rtp': 'vim/'}
+
 
 " syntax support
-"NeoBundle 'vim-ruby/vim-ruby'
-"NeoBundle 'tsaleh/vim-tmux'
-"NeoBundle 'Puppet-Syntax-Highlighting'
 NeoBundle 'JSON.vim'
-"NeoBundle 'tpope/vim-cucumber'
-"NeoBundle 'tpope/vim-haml'
 NeoBundle 'tpope/vim-markdown'
-"NeoBundle 'kchmck/vim-coffee-script'
-"NeoBundle 'vitaly/vim-syntastic-coffee'
-"NeoBundle 'vim-scripts/jade.vim'
 NeoBundle 'wavded/vim-stylus'
-"NeoBundle 'slim-template/vim-slim'
-"NeoBundle 'elixir-lang/vim-elixir'
-"NeoBundle 'Blackrush/vim-gocode'
 NeoBundle 'ekalinin/Dockerfile.vim'
 NeoBundle 'groenewege/vim-less'
 NeoBundle 'mustache/vim-mustache-handlebars'
+NeoBundle 'joukevandermaas/vim-ember-hbs'
 NeoBundle 'mtscout6/vim-cjsx'
-"NeoBundle 'vitaly/vim-literate-coffeescript'
-"NeoBundle 'rust-lang/rust', {'rtp': 'src/etc/vim/'}
-NeoBundle 'pangloss/vim-javascript'
-NeoBundle 'mxw/vim-jsx'
-
-" clojure
-"NeoBundle 'VimClojure'
-"NeoBundle 'guns/vim-clojure-static'
-NeoBundle 'tpope/vim-fireplace'
-NeoBundle 'kien/rainbow_parentheses.vim'
+NeoBundle 'posva/vim-vue'
+NeoBundle 'hail2u/vim-css3-syntax'
+NeoBundle 'cakebaker/scss-syntax.vim'
+NeoBundle 'othree/es.next.syntax.vim'
+NeoBundle 'othree/yajs.vim'
 
 " Support and minor
 
