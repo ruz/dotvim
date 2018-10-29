@@ -10,7 +10,7 @@ nmap <silent> <leader>s :set nolist!<CR>
 " Ctrl-N to disable search match highlight
 nmap <silent> <C-N> :silent noh<CR>
 
-" Ctrol-E to switch between 2 last buffers
+" Ctrl-E to switch between 2 last buffers
 nmap <C-E> :b#<CR>
 
 " ,e to fast finding files. just type beginning of a name and hit TAB
