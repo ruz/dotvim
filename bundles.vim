@@ -22,8 +22,8 @@ NeoBundle 'jistr/vim-nerdtree-tabs'
 NeoBundle 'scrooloose/nerdcommenter'
 " fuzzy file open
 NeoBundle 'kien/ctrlp.vim'
-" popup completion menu
-NeoBundle 'AutoComplPop'
+" auto completion
+NeoBundle 'Valloric/YouCompleteMe'
 " tags list navigation
 NeoBundle 'taglist.vim'
 " yank history
