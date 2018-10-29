@@ -71,3 +71,6 @@ autocmd FileType go nmap <leader>gt  <Plug>(go-test)
 autocmd FileType go nmap <leader>gft  <Plug>(go-test-func)
 autocmd FileType go nmap <leader>gd  <Plug>(go-doc-browser)
 autocmd FileType go nmap <leader>gl  <Plug>(go-metalinter)
+
+noremap <Leader>y "*y
+noremap <Leader>p "*p
