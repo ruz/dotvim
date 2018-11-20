@@ -1,5 +1,8 @@
-syntax on
+set termguicolors
 filetype plugin indent on
+syntax enable
+set background=dark
+colorscheme solarized8_high
 
 " prevent vim from adding that stupid empty line at the end of every file
 "set noeol
