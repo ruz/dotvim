@@ -34,6 +34,10 @@ set list
 " highlight spell errors
 hi SpellErrors guibg=red guifg=black ctermbg=red ctermfg=black
 
+" highlight indent
+hi IndentGuidesOdd  guibg=gray ctermbg=234
+hi IndentGuidesEven guibg=green ctermbg=235
+
 " behavior
                         " ignore these files when completing names and in
                         " explorer
