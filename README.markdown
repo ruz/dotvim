@@ -1,35 +1,19 @@
-## Dotvim
+## STATUS
 
-> NOTE: this project is no longer supported. The development moved to the
-> [Dotvim v2](https://github.com/vitaly/dotvim2). Beta testers and
-> contributions are welcome.
+- now this is separate project even if it's fork of dotvim
+- [original dotvim](https://github.com/astrails/dotvim) is
+  no longer supported
+- see also [dotvim v2](https://github.com/vitaly/dotvim2)
+  and other vim configs
 
-### An attempt at The Ultimate Vim Configuration™ ;)
+### Just My Vim Configuration™ ;)
 
-All the right plugins are in. Nerdtree, CtrlP, you name it.
+Plenty of plugins are in... Easy to drop in more.
 
-The focus is on supporting Rails, but there is a lot of generic stuff too, so
-it will surely serve you well with any language of your choice.
+My focus is on Go, Perl, JS, CSS... and a lot of generic stuff too.
 
-The config is using [NeoBundle](https://github.com/Shougo/neobundle.vim) for easy
-upgrading. The list of installed bundles is in the `bundles.vim`
-
-> IMPORTANT:
-> - Vundle was replaced with
->   [Neobundle](https://github.com/Shougo/neobundle.vim). See [Neobundle
->   upgrade instructions](#upgrade_neobundle) if you have an older Vundle based
->   install.
-> - vim-powerline was replaced with [vim-airline](#airline). Please see
->   [installation instructions](#installation_note)
-
-*Some* help tips are provided for *some* of the plugins. please check out the
-plugin's docs for more info.
-
-Follow [@vkushner][@vkushner] and [@astrails][@astrails] on Twitter to receive
-announcements of new versions, tips, etc.
-
-[@vkushner]: https://twitter.com/vkushner
-[@astrails]: https://twitter.com/astrails
+The config is using [Dein](https://github.com/Shougo/dein.vim) for easy
+upgrading. The list of installed plugins is in the `bundles.vim`
 
 <a name=top>
 #### Contents
@@ -96,11 +80,9 @@ announcements of new versions, tips, etc.
 
 From your homedirectory (on Linux/Mac OSX):
 
-* `git clone https://github.com/astrails/dotvim.git # or git@github.com:astrails/dotvim.git for ssh`
+* `git clone git@github.com:ruz/dotvim.git`
 * `ln -sfn dotvim .vim`
 * `ln -sfn dotvim/vimrc .vimrc`
-* `cd .vim; make install`
-
 
   > Note: if you already have `~/.vim` `~/.vimrc` REMOVE THEM (you might want to backup them first :)
 
