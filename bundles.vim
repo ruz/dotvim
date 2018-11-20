@@ -1,5 +1,3 @@
-set nocompatible
-filetype off
 
 if has('vim_starting')
   set runtimepath+=~/.vim/bundle/neobundle.vim/
@@ -127,6 +125,3 @@ if filereadable(expand("~/.vimrc.bundles"))
 endif
 
 call neobundle#end()
-
-filetype plugin indent on
-
