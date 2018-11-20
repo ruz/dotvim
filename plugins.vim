@@ -156,3 +156,8 @@ let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 let g:TerminusMouse = 0
 " vertical bar is to thin and sometimes can not find it
 let g:TerminusInsertCursorShape = 2
+
+" highlight indent
+let g:indent_guides_auto_colors = 0
+hi IndentGuidesOdd  guibg=#003342 ctermbg=234
+hi IndentGuidesEven guibg=#003b4d ctermbg=235
