@@ -2,7 +2,7 @@ set termguicolors
 filetype plugin indent on
 syntax enable
 set background=dark
-colorscheme solarized8_high
+colorscheme solarized8
 
 " prevent vim from adding that stupid empty line at the end of every file
 "set noeol
@@ -41,7 +41,7 @@ set wildignore=.svn,CVS,.git,.hg,*.o,*.a,*.class,*.mo,*.la,*.so,*.obj,*.swp,*.jp
 set shell=bash          " use bash for shell commands
 set autowriteall        " Automatically save before commands like :next and :make
 set hidden              " enable multiple modified buffers
-set history=1000
+set history=10000
 set autoread            " automatically read file that has been changed on disk and doesn't have changes in vim
 set backspace=indent,eol,start
 set guioptions-=T       " disable toolbar"

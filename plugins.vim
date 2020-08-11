@@ -1,4 +1,8 @@
 set background=dark
+
+" increase installation timeout
+let g:dein#install_process_timeout = 240
+
 " showmarks
 let g:showmarks_enable = 0 " disabled by default by populardemand ;)
 hi! link ShowMarksHLl LineNr

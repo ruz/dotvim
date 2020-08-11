@@ -1,10 +1,17 @@
+" update and install:
+"   call dein#update()
+" clean not used plugins:
+"   :call dein#recache_runtimepath()
+"   :call map(dein#check_clean(), "delete(v:val, 'rf')")
+
 set runtimepath+=~/.vim/bundles/repos/github.com/Shougo/dein.vim
 
 if dein#load_state('~/.vim/bundles')
   call dein#begin('~/.vim/bundles')
 
   " Let dein manage dein
-  call dein#add('~/.vim/bundles/repos/github.com/Shougo/dein.vim')
+  call dein#add('Shougo/dein.vim')
+  call dein#add('wsdjeg/dein-ui.vim')
 
   " Better terminal support: focus events,
   " cursor shape, mouse and bracketed paste
@@ -19,7 +26,7 @@ if dein#load_state('~/.vim/bundles')
   " fuzzy file open
   call dein#add( 'kien/ctrlp.vim' )
   " auto completion
-  call dein#add( 'Valloric/YouCompleteMe' )
+  call dein#add( 'Valloric/YouCompleteMe', {'build': './install.py --go-completer'} )
   " tags list navigation
   call dein#add( 'vim-scripts/taglist.vim' )
   " yank history
@@ -77,12 +84,12 @@ if dein#load_state('~/.vim/bundles')
 
   " color themes
   call dein#add( 'lifepillar/vim-solarized8' )
+  call dein#add( 'dahu/vim-zebra' )
 
   " go
   "call dein#add( 'Blackrush/vim-gocode' )
   call dein#add( 'fatih/vim-go', { 'do': ':GoInstallBinaries' } )
   call dein#add( 'mdempsky/gocode', {'rtp': 'vim/'} )
-
 
   " syntax support
   call dein#add( 'vim-scripts/JSON.vim' )
@@ -98,6 +105,9 @@ if dein#load_state('~/.vim/bundles')
   call dein#add( 'cakebaker/scss-syntax.vim' )
   call dein#add( 'othree/es.next.syntax.vim' )
   call dein#add( 'othree/yajs.vim' )
+  " simple log hi-lighter
+  call dein#add( 'dzeban/vim-log-syntax' )
+
 
   " Support and minor
 
