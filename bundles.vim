@@ -1,8 +1,5 @@
-" update and install:
-"   call dein#update()
-" clean not used plugins:
-"   :call dein#recache_runtimepath()
-"   :call map(dein#check_clean(), "delete(v:val, 'rf')")
+" update, install and cleanup:
+"   make update
 
 set runtimepath+=~/.vim/bundles/repos/github.com/Shougo/dein.vim
 

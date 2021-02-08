@@ -27,7 +27,7 @@ cleanup-bundles:
 update-bundles: ${NEOBUNDLE}
 	vim -c ':DeinUpdate'
 
-update: cleanup-bundles update-bundles
+update: update-bundles cleanup-bundles
 
 .PHONY: help
 

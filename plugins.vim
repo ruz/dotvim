@@ -59,8 +59,8 @@ let g:ctrlp_cmd = 'CtrlP'
 nmap <leader>. :CtrlPClearCache<cr>:CtrlP<cr>
 nmap <leader>l :CtrlPLine<cr>
 nmap <leader>b :CtrlPBuff<cr>
-nmap <leader>m :CtrlPBufTag<cr>
-nmap <leader>M :CtrlPBufTagAll<cr>
+"nmap <leader>m :CtrlPBufTag<cr>
+"nmap <leader>M :CtrlPBufTagAll<cr>
 
 let g:ctrlp_clear_cache_on_exit = 1
 " ctrlp leaves stale caches behind if there is another vim process running
