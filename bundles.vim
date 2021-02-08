@@ -107,7 +107,9 @@ if dein#load_state('~/.vim/bundles')
   call dein#add( 'othree/yajs.vim' )
   " simple log hi-lighter
   call dein#add( 'dzeban/vim-log-syntax' )
-
+  " color marking
+  call dein#add( 'inkarkat/vim-ingo-library' )
+  call dein#add( 'inkarkat/vim-mark' )
 
   " Support and minor
 
