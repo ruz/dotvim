@@ -77,3 +77,7 @@ noremap <Leader>p "*p
 
 " split - 'inversion' of J
 nnoremap K i<CR><Esc>
+
+" gitgutter next/prev change
+nmap ]c <Plug>(GitGutterNextHunk)
+nmap [c <Plug>(GitGutterPrevHunk)

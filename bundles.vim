@@ -23,7 +23,7 @@ if dein#load_state('~/.vim/bundles')
   " fuzzy file open
   call dein#add( 'kien/ctrlp.vim' )
   " auto completion
-  call dein#add( 'Valloric/YouCompleteMe', {'build': './install.py --go-completer'} )
+  call dein#add( 'Valloric/YouCompleteMe', {'build': './install.py'} )
   " tags list navigation
   call dein#add( 'vim-scripts/taglist.vim' )
   " yank history
@@ -105,8 +105,8 @@ if dein#load_state('~/.vim/bundles')
   " simple log hi-lighter
   call dein#add( 'dzeban/vim-log-syntax' )
   " color marking
-  call dein#add( 'inkarkat/vim-ingo-library' )
-  call dein#add( 'inkarkat/vim-mark' )
+  "call dein#add( 'inkarkat/vim-ingo-library' )
+  "call dein#add( 'inkarkat/vim-mark' )
 
   " Support and minor
 
