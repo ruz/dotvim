@@ -2,37 +2,44 @@
 # line variable
 RUBY ?= $(shell ./find-ruby.sh)
 
-.PHONY: help delete
+.PHONY: default
 default: help
 
-.PHONY: compile-command-t compile
 
+.PHONY: install-links
+install-links:
+	ln -sf ~/projs/dotvim/vimrc ~/.vimrc
+	ln -sf ~/projs/dotvim ~/.vim
+
+.PHONY: compile
+compile: compile-command-t
+
+.PHONY: compile-command-t
 compile-command-t:
 	test ! -d bundle/Command-T || (cd bundle/Command-T/ruby/command-t/ && $(RUBY) extconf.rb && make)
 
-compile: compile-command-t
 
-.PHONY: edit-bundles edit
-
-edit-bundles:
+.PHONY: edit
+edit:
 	vim bundles.vim
 
-edit: edit-bundles
 
-.PHONY: cleanup-bundles update-bundles update
+.PHONY: update
+update: update-bundles cleanup-bundles
 
+.PHONY: cleanup-bundles
 cleanup-bundles:
 	vim -c ':call dein#recache_runtimepath()' -c ':call map(dein#check_clean(), "delete(v:val, \"rf\")")' -c ':qall'
 
-update-bundles: ${NEOBUNDLE}
+.PHONY: update-bundles
+update-bundles:
 	vim -c ':DeinUpdate'
 
-update: update-bundles cleanup-bundles
+
 
 .PHONY: help
-
 help:
-	@echo COMMON:
 	@echo 'make help                        (default) print this message'
+	@echo 'make install-links               install symlinks'
 	@echo 'make edit                        edit bundles file'
 	@echo 'make update                      update installed bundles'
